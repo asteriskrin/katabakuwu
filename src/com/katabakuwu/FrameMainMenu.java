@@ -43,17 +43,17 @@ public class FrameMainMenu extends JFrame {
 		lblNewLabel.setBounds(10, 35, 456, 36);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("Start Game");
+		JButton btnStartGame = new JButton("Start Game");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnNewButton.setBounds(10, 306, 446, 60);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Scoreboard");
+		JButton btnScoreboard = new JButton("Scoreboard");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnNewButton_1.setBounds(10, 386, 446, 60);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_1_1 = new JButton("Settings");
+		JButton btnSettings = new JButton("Settings");
 		btnNewButton_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnNewButton_1_1.setBounds(10, 466, 446, 60);
 		contentPane.add(btnNewButton_1_1);
