@@ -15,6 +15,7 @@ public class Player {
 	 */
 	public Player() {
 		health = new Health();
+		timer = new Timer(300);
 		this.score = 0;
 	}
 	
