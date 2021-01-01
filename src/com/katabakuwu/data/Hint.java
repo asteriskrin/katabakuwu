@@ -1,5 +1,7 @@
 package com.katabakuwu.data;
 
+import javax.swing.JProgressBar;
+
 /**
  * Hint class.
  * 
@@ -31,5 +33,14 @@ public class Hint {
 	 */
 	public void setValue(float value) {
 		this.value = value;
+	}
+	
+	/**
+	 * Update progress bar
+	 * 
+	 * @param progressBar
+	 */
+	public void updateProgressBar(JProgressBar progressBar) {
+		progressBar.setValue((int) this.value);
 	}
 }
