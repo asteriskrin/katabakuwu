@@ -58,9 +58,10 @@ public class FrameGame extends JFrame {
 		JProgressBar hintBar = new JProgressBar();
 		hintBar.setBackground(Color.LIGHT_GRAY);
 		hintBar.setForeground(Color.ORANGE);
-		hintBar.setValue(60);
 		hintBar.setBounds(92, 63, 146, 11);
 		contentPane.add(hintBar);
+
+		game.getUser().getPlayer().getHint().updateProgressBar(hintBar);
 		
 		String scoreText = Integer.toString(game.getUser().getPlayer().getScore());
 		
