@@ -1,13 +1,8 @@
 package com.katabakuwu;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import java.io.*;
-
 public class FrameMainMenu extends JFrame {
 
 	private static final long serialVersionUID = 2883848038660074213L;
@@ -29,8 +24,6 @@ public class FrameMainMenu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		
-
 		JLabel picLabel = new JLabel();
 		picLabel.setLocation(165, 100);
 		picLabel.setSize(150, 150);
