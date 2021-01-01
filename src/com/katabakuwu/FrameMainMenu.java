@@ -2,7 +2,19 @@ package com.katabakuwu;
 
 import javax.swing.*;
 import javax.swing.border.*;
+
+import com.katabaku.mainmenu.ButtonPlay;
+import com.katabaku.mainmenu.Cloud;
+import com.katabakuwu.controller.Game;
+
 import java.awt.*;
+
+/**
+ * FrameMainMenu class.
+ * 
+ * @author Farhan Arifandi
+ * @author Ryan Garnet Andrianto
+ */
 public class FrameMainMenu extends JFrame {
 
 	private static final long serialVersionUID = 2883848038660074213L;
@@ -12,14 +24,14 @@ public class FrameMainMenu extends JFrame {
 	 * Create the frame.
 	 * 
 	 */
-	public FrameMainMenu() {
+	public FrameMainMenu(Game game) {
 		super("Katabakuwu");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 640);
 		
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(Color.decode("#87CEEB"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -36,9 +48,7 @@ public class FrameMainMenu extends JFrame {
 		lblNewLabel.setBounds(10, 35, 456, 36);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnStartGame = new JButton("Start Game");
-		btnStartGame.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnStartGame.setBounds(10, 306, 446, 60);
+		JButton btnStartGame = new ButtonPlay(game, "Start Game", 10, 306, 446, 60);
 		contentPane.add(btnStartGame);
 		
 		JButton btnScoreboard = new JButton("Scoreboard");
@@ -50,5 +60,11 @@ public class FrameMainMenu extends JFrame {
 		btnSettings.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSettings.setBounds(10, 466, 446, 60);
 		contentPane.add(btnSettings);
+		
+		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);
+		contentPane.add(cloud1);
+		
+		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
+		contentPane.add(cloud2);
 	}
 }

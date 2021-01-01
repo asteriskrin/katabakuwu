@@ -2,6 +2,10 @@ package com.katabakuwu;
 
 import javax.swing.*;
 import javax.swing.border.*;
+
+import com.katabakuwu.controller.Game;
+import com.katabakuwu.data.Player;
+
 import java.awt.*;
 
 public class FrameGame extends JFrame {
@@ -13,11 +17,15 @@ public class FrameGame extends JFrame {
 	 * Create the frame.
 	 * 
 	 */
-	public FrameGame() {
+	public FrameGame(Game game) {
 		super("Katabakuwu");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 640);
+		
+		// Create Player class instance
+		Player player = new Player();
+		game.getUser().setPlayer(player);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -31,7 +39,9 @@ public class FrameGame extends JFrame {
 		profileImg.setIcon(new ImageIcon(new ImageIcon("assets/profileimg-placeholder.jpg").getImage().getScaledInstance(72, 72, Image.SCALE_SMOOTH)));
 		contentPane.add(profileImg);
 		
-		JLabel playerName = new JLabel("Lv. 1 Developer");
+		String tempString = "Lv. " + game.getUser().getLevel() + " " + game.getUser().getName();
+		
+		JLabel playerName = new JLabel(tempString);
 		playerName.setVerticalAlignment(SwingConstants.TOP);
 		playerName.setHorizontalAlignment(SwingConstants.LEFT);
 		playerName.setFont(new Font("Arial", Font.BOLD, 18));
@@ -41,18 +51,21 @@ public class FrameGame extends JFrame {
 		JProgressBar healthBar = new JProgressBar();
 		healthBar.setBackground(Color.LIGHT_GRAY);
 		healthBar.setForeground(new Color(51, 204, 0));
-		healthBar.setValue(80);
+		healthBar.setValue((int) game.getUser().getPlayer().getHealth().getValue());
 		healthBar.setBounds(92, 36, 146, 23);
 		contentPane.add(healthBar);
 		
 		JProgressBar hintBar = new JProgressBar();
 		hintBar.setBackground(Color.LIGHT_GRAY);
 		hintBar.setForeground(Color.ORANGE);
-		hintBar.setValue(60);
 		hintBar.setBounds(92, 63, 146, 11);
 		contentPane.add(hintBar);
+
+		game.getUser().getPlayer().getHint().updateProgressBar(hintBar);
 		
-		JLabel scoreLabel = new JLabel("00123456");
+		String scoreText = Integer.toString(game.getUser().getPlayer().getScore());
+		
+		JLabel scoreLabel = new JLabel(scoreText);
 		scoreLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		scoreLabel.setVerticalAlignment(SwingConstants.TOP);
 		scoreLabel.setFont(new Font("Agency FB", Font.BOLD, 36));
