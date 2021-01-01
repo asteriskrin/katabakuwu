@@ -3,6 +3,7 @@ package com.katabakuwu.data;
 public class User {
 	private String name;
 	private int level;
+	private Player player;
 	
 	/**
 	 * Constructor
@@ -44,5 +45,20 @@ public class User {
 		this.level = level;
 	}
 	
+	/**
+	 * Get player
+	 * @return Player
+	 */
+	public Player getPlayer() {
+		return this.player;
+	}
+	
+	/**
+	 * Set player
+	 * @param Player Player class
+	 */
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
 	
 }
