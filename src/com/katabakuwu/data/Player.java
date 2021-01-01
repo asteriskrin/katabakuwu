@@ -8,6 +8,7 @@ package com.katabakuwu.data;
 public class Player {
 	private Health health;
 	private Timer timer;
+	private Hint hint;
 	private int score;
 	
 	/**
@@ -16,6 +17,7 @@ public class Player {
 	public Player() {
 		health = new Health();
 		timer = new Timer(300);
+		hint = new Hint((float) 100.0);
 		this.score = 0;
 	}
 	
@@ -41,5 +43,13 @@ public class Player {
 	 */
 	public Timer getTimer() {
 		return this.timer;
+	}
+	
+	/**
+	 * Get Hint
+	 * @return Hint
+	 */
+	public Hint getHint() {
+		return this.hint;
 	}
 }
