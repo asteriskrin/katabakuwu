@@ -2,7 +2,17 @@ package com.katabakuwu;
 
 import javax.swing.*;
 import javax.swing.border.*;
+
+import com.katabaku.mainmenu.ButtonPlay;
+
 import java.awt.*;
+
+/**
+ * FrameMainMenu class.
+ * 
+ * @author Farhan Arifandi
+ * @author Ryan Garnet Andrianto
+ */
 public class FrameMainMenu extends JFrame {
 
 	private static final long serialVersionUID = 2883848038660074213L;
@@ -36,9 +46,7 @@ public class FrameMainMenu extends JFrame {
 		lblNewLabel.setBounds(10, 35, 456, 36);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnStartGame = new JButton("Start Game");
-		btnStartGame.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnStartGame.setBounds(10, 306, 446, 60);
+		JButton btnStartGame = new ButtonPlay("Start Game", 10, 306, 446, 60);
 		contentPane.add(btnStartGame);
 		
 		JButton btnScoreboard = new JButton("Scoreboard");
