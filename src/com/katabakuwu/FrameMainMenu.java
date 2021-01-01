@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import com.katabaku.mainmenu.ButtonPlay;
+import com.katabakuwu.controller.Game;
 
 import java.awt.*;
 
@@ -22,7 +23,7 @@ public class FrameMainMenu extends JFrame {
 	 * Create the frame.
 	 * 
 	 */
-	public FrameMainMenu() {
+	public FrameMainMenu(Game game) {
 		super("Katabakuwu");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
