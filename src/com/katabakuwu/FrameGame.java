@@ -2,6 +2,9 @@ package com.katabakuwu;
 
 import javax.swing.*;
 import javax.swing.border.*;
+
+import com.katabakuwu.controller.Game;
+
 import java.awt.*;
 
 public class FrameGame extends JFrame {
@@ -13,7 +16,7 @@ public class FrameGame extends JFrame {
 	 * Create the frame.
 	 * 
 	 */
-	public FrameGame() {
+	public FrameGame(Game game) {
 		super("Katabakuwu");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,7 +34,9 @@ public class FrameGame extends JFrame {
 		profileImg.setIcon(new ImageIcon(new ImageIcon("assets/profileimg-placeholder.jpg").getImage().getScaledInstance(72, 72, Image.SCALE_SMOOTH)));
 		contentPane.add(profileImg);
 		
-		JLabel playerName = new JLabel("Lv. 1 Developer");
+		String tempString = "Lv. " + game.getUser().getLevel() + " " + game.getUser().getName();
+		
+		JLabel playerName = new JLabel(tempString);
 		playerName.setVerticalAlignment(SwingConstants.TOP);
 		playerName.setHorizontalAlignment(SwingConstants.LEFT);
 		playerName.setFont(new Font("Arial", Font.BOLD, 18));

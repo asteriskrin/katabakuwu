@@ -47,7 +47,7 @@ public class FrameMainMenu extends JFrame {
 		lblNewLabel.setBounds(10, 35, 456, 36);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnStartGame = new ButtonPlay("Start Game", 10, 306, 446, 60);
+		JButton btnStartGame = new ButtonPlay(game, "Start Game", 10, 306, 446, 60);
 		contentPane.add(btnStartGame);
 		
 		JButton btnScoreboard = new JButton("Scoreboard");

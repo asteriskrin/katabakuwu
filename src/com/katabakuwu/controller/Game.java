@@ -14,4 +14,13 @@ public class Game {
 	public Game() {
 		user = new User("PlayerName", 1);
 	}
+	
+	/**
+	 * Get user.
+	 * 
+	 * @return User class
+	 */
+	public User getUser() {
+		return user;
+	}
 }
