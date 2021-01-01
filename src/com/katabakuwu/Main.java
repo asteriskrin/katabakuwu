@@ -2,6 +2,8 @@ package com.katabakuwu;
 
 import java.awt.EventQueue;
 
+import javax.swing.JOptionPane;
+
 import com.katabakuwu.controller.Game;
 
 public class Main {
@@ -16,6 +18,9 @@ public class Main {
 				try {
 					FrameMainMenu frame = new FrameMainMenu(game);
 					frame.setVisible(true);
+					
+					String name = JOptionPane.showInputDialog("Masukkan nama: ");
+					game.getUser().setName(name);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
