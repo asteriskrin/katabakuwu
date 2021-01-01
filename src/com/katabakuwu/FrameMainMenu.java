@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import com.katabaku.mainmenu.ButtonPlay;
+import com.katabaku.mainmenu.Cloud;
 import com.katabakuwu.controller.Game;
 
 import java.awt.*;
@@ -30,7 +31,7 @@ public class FrameMainMenu extends JFrame {
 		setBounds(100, 100, 480, 640);
 		
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(Color.decode("#87CEEB"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -59,5 +60,11 @@ public class FrameMainMenu extends JFrame {
 		btnSettings.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSettings.setBounds(10, 466, 446, 60);
 		contentPane.add(btnSettings);
+		
+		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);
+		contentPane.add(cloud1);
+		
+		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
+		contentPane.add(cloud2);
 	}
 }
