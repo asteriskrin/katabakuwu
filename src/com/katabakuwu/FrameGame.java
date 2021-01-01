@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import com.katabakuwu.controller.Game;
+import com.katabakuwu.data.Player;
 
 import java.awt.*;
 
@@ -21,6 +22,10 @@ public class FrameGame extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 640);
+		
+		// Create Player class instance
+		Player player = new Player();
+		game.getUser().setPlayer(player);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -46,7 +51,7 @@ public class FrameGame extends JFrame {
 		JProgressBar healthBar = new JProgressBar();
 		healthBar.setBackground(Color.LIGHT_GRAY);
 		healthBar.setForeground(new Color(51, 204, 0));
-		healthBar.setValue(80);
+		healthBar.setValue((int) game.getUser().getPlayer().getHealth().getValue());
 		healthBar.setBounds(92, 36, 146, 23);
 		contentPane.add(healthBar);
 		
@@ -57,7 +62,9 @@ public class FrameGame extends JFrame {
 		hintBar.setBounds(92, 63, 146, 11);
 		contentPane.add(hintBar);
 		
-		JLabel scoreLabel = new JLabel("00123456");
+		String scoreText = Integer.toString(game.getUser().getPlayer().getScore());
+		
+		JLabel scoreLabel = new JLabel(scoreText);
 		scoreLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		scoreLabel.setVerticalAlignment(SwingConstants.TOP);
 		scoreLabel.setFont(new Font("Agency FB", Font.BOLD, 36));
