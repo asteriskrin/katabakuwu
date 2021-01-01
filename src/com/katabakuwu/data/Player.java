@@ -7,6 +7,7 @@ package com.katabakuwu.data;
  */
 public class Player {
 	private Health health;
+	private Timer timer;
 	private int score;
 	
 	/**
@@ -31,5 +32,13 @@ public class Player {
 	 */
 	public Health getHealth() {
 		return this.health;
+	}
+	
+	/**
+	 * Get timer
+	 * @return Timer
+	 */
+	public Timer getTimer() {
+		return this.timer;
 	}
 }
