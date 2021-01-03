@@ -80,6 +80,7 @@ public class FrameGame extends JFrame {
 		contentPane.add(hintBtn);
 		
 		JTextField guessTextPane = new JTextField();
+		guessTextPane.setEditable(false);
 		guessTextPane.setHorizontalAlignment(SwingConstants.CENTER);
 		guessTextPane.setFont(new Font("Arial", Font.PLAIN, 24));
 		guessTextPane.setText("A_PL_P S_R_T");
