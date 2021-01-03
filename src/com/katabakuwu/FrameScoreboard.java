@@ -3,25 +3,16 @@ package com.katabakuwu;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import com.katabaku.mainmenu.Cloud;
-import com.katabakuwu.controller.Game;
+import com.katabakuwu.mainmenu.Cloud;
+import com.katabakuwu.controller.*;
 
 import java.awt.*;
-
-class DisabledItemSelectionModel extends DefaultListSelectionModel {
-
-    @Override
-    public void setSelectionInterval(int index0, int index1) {
-        super.setSelectionInterval(-1, -1);
-    }
-}
 
 public class FrameScoreboard extends JFrame {
 
 	private static final long serialVersionUID = 2883848038660074213L;
 	private JPanel contentPane;
 
-	@SuppressWarnings({ "unchecked", "rawtypes", "serial" })
 	public FrameScoreboard(Game game) {
 		super("Katabakuwu");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
