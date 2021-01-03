@@ -3,8 +3,8 @@ package com.katabakuwu;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import com.katabaku.mainmenu.ButtonPlay;
-import com.katabaku.mainmenu.Cloud;
+import com.katabakuwu.mainmenu.ButtonPlay;
+import com.katabakuwu.mainmenu.Cloud;
 import com.katabakuwu.controller.Game;
 
 import java.awt.*;

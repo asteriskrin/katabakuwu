@@ -1,4 +1,4 @@
-package com.katabaku.mainmenu;
+package com.katabakuwu.mainmenu;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
