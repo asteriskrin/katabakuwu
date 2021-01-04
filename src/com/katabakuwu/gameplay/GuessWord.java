@@ -80,4 +80,20 @@ public class GuessWord {
 		
 		return isFound;
 	}
+	
+	/**
+	 * Get unguessed letter.
+	 * 
+	 * @return char
+	 */
+	public char getUnguessedLetter() {
+		for(int i = 0; i < letters.size(); i++) {
+			// If the letter has been guessed, skip
+			if(letters.get(i).getStatus())
+				continue;
+			
+			return letters.get(i).getLetter();
+		}
+		return '\0';
+	}
 }

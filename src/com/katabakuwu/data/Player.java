@@ -20,7 +20,7 @@ public class Player {
 	public Player() {
 		health = new Health();
 		timer = new Timer(300);
-		hint = new Hint((float) 100.0);
+		this.hint = new Hint((float)100.0);
 		this.score = 0;
 		guessWord = new GuessWord();
 	}
@@ -64,5 +64,19 @@ public class Player {
 	 */
 	public GuessWord getGuessWord() {
 		return guessWord;
+	}
+	
+	/**
+	 * Use hint.
+	 */
+	public void useHint() {
+		if(hint.getValue() >= 30.0) {
+			hint.reduceValue((float) 30.0);
+			hint.updateProgressBar();
+			System.out.println("USE HINT: " + guessWord.getUnguessedLetter());
+		}
+		else {
+			System.out.println("Insufficient hint point.");
+		}
 	}
 }

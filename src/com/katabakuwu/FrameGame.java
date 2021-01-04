@@ -52,16 +52,14 @@ public class FrameGame extends JFrame {
 		HealthBar healthBar = new HealthBar((int) game.getUser().getPlayer().getHealth().getValue(), 92, 36, 146, 23);
 		contentPane.add(healthBar);
 		
-		JProgressBar hintBar = new JProgressBar();
-		hintBar.setBackground(Color.LIGHT_GRAY);
-		hintBar.setForeground(Color.ORANGE);
-		hintBar.setBounds(92, 63, 146, 11);
+		HintBar hintBar = new HintBar(92, 63, 146, 11);
 		contentPane.add(hintBar);
+		player.getHint().setBar(hintBar);
 		
 		TimerBar timerBar = new TimerBar(100, 100, 0, 0, this.getWidth(), 6);
 		contentPane.add(timerBar);
 
-		game.getUser().getPlayer().getHint().updateProgressBar(hintBar);
+		player.getHint().updateProgressBar();
 		game.getUser().getPlayer().getGuessWord().setWord(game.getWordDatabase().getRandomWord());
 		String scoreText = Integer.toString(game.getUser().getPlayer().getScore());
 		
@@ -72,11 +70,7 @@ public class FrameGame extends JFrame {
 		scoreLabel.setBounds(307, 10, 149, 49);
 		contentPane.add(scoreLabel);
 		
-		JButton hintBtn = new JButton("?");
-		hintBtn.setForeground(Color.WHITE);
-		hintBtn.setBackground(Color.MAGENTA);
-		hintBtn.setFont(new Font("Tahoma", Font.PLAIN, 48));
-		hintBtn.setBounds(10, 292, 60, 60);
+		ButtonHint hintBtn = new ButtonHint(game, 10, 292, 60, 60);
 		contentPane.add(hintBtn);
 		
 		JTextField guessTextPane = new JTextField();
