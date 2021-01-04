@@ -63,7 +63,7 @@ public class FrameGame extends JFrame {
 		contentPane.add(timerBar);
 
 		game.getUser().getPlayer().getHint().updateProgressBar(hintBar);
-		
+		game.getUser().getPlayer().getGuessWord().setWord(game.getWordDatabase().getRandomWord());
 		String scoreText = Integer.toString(game.getUser().getPlayer().getScore());
 		
 		JLabel scoreLabel = new JLabel(scoreText);
@@ -84,10 +84,13 @@ public class FrameGame extends JFrame {
 		guessTextPane.setEditable(false);
 		guessTextPane.setHorizontalAlignment(SwingConstants.CENTER);
 		guessTextPane.setFont(new Font("Arial", Font.PLAIN, 24));
-		guessTextPane.setText(game.getWordDatabase().getRandomWord());
+		
+		guessTextPane.setText("");
 		guessTextPane.setBackground(new Color(255, 0, 255, 50));
 		guessTextPane.setBounds(10, 362, 446, 50);
 		contentPane.add(guessTextPane);
+		
+		game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessTextPane);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.decode("#89cc9b"));
