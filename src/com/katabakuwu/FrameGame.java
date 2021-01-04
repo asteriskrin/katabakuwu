@@ -84,7 +84,7 @@ public class FrameGame extends JFrame {
 		guessTextPane.setEditable(false);
 		guessTextPane.setHorizontalAlignment(SwingConstants.CENTER);
 		guessTextPane.setFont(new Font("Arial", Font.PLAIN, 24));
-		guessTextPane.setText("A_PL_P S_R_T");
+		guessTextPane.setText(game.getWordDatabase().getRandomWord());
 		guessTextPane.setBackground(new Color(255, 0, 255, 50));
 		guessTextPane.setBounds(10, 362, 446, 50);
 		contentPane.add(guessTextPane);
