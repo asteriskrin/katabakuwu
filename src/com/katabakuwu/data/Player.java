@@ -1,5 +1,7 @@
 package com.katabakuwu.data;
 
+import com.katabakuwu.gameplay.GuessWord;
+
 /**
  * Player class.
  * 
@@ -10,6 +12,7 @@ public class Player {
 	private Timer timer;
 	private Hint hint;
 	private int score;
+	private GuessWord guessWord;
 	
 	/**
 	 * Constructor
@@ -19,6 +22,7 @@ public class Player {
 		timer = new Timer(300);
 		hint = new Hint((float) 100.0);
 		this.score = 0;
+		guessWord = new GuessWord();
 	}
 	
 	/**
@@ -51,5 +55,14 @@ public class Player {
 	 */
 	public Hint getHint() {
 		return this.hint;
+	}
+	
+	/**
+	 * Get Guess Word.
+	 * 
+	 * @return Guess Word
+	 */
+	public GuessWord getGuessWord() {
+		return guessWord;
 	}
 }
