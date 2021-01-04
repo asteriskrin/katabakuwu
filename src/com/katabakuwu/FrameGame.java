@@ -5,6 +5,7 @@ import javax.swing.border.*;
 
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.data.Player;
+import com.katabakuwu.mainmenu.Cloud;
 
 import java.awt.*;
 
@@ -28,7 +29,7 @@ public class FrameGame extends JFrame {
 		game.getUser().setPlayer(player);
 		
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(Color.decode("#87CEEB"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -89,6 +90,7 @@ public class FrameGame extends JFrame {
 		contentPane.add(guessTextPane);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.decode("#89cc9b"));
 		panel.setBounds(10, 436, 450, 135);
 		contentPane.add(panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
@@ -326,5 +328,11 @@ public class FrameGame extends JFrame {
 		gbc_btnM.gridx = 6;
 		gbc_btnM.gridy = 0;
 		keyboardBtm.add(btnM, gbc_btnM);
+		
+		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);
+		contentPane.add(cloud1);
+		
+		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
+		contentPane.add(cloud2);
 	}
 }
