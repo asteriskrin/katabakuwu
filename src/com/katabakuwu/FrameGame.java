@@ -337,5 +337,9 @@ public class FrameGame extends JFrame {
 		
 		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
 		contentPane.add(cloud2);
+		
+		KeyboardHandler keyboardHandler = new KeyboardHandler(game, guessTextPane);
+		this.addKeyListener(keyboardHandler);
+		this.setFocusable(true);
 	}
 }

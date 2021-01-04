@@ -55,4 +55,29 @@ public class GuessWord {
 	public void updateWordDisplay(JTextField textField) {
 		textField.setText(getWord());
 	}
+	
+	/**
+	 * Guess the word.
+	 * 
+	 * @param letter
+	 * @return true success
+	 * @return false fail
+	 */
+	public boolean guess(char letter) {
+		boolean isFound = false;
+		for(int i = 0; i < letters.size(); i++) {
+			// If the letter has been guessed, skip
+			if(letters.get(i).getStatus())
+				continue;
+			
+			// If the guess is correct
+			if(letters.get(i).getLetter() == letter) {
+				letters.get(i).setStatus(true);
+				
+				isFound = true;
+			}
+		}
+		
+		return isFound;
+	}
 }
