@@ -4,10 +4,17 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import com.katabakuwu.mainmenu.Cloud;
+import com.katabakuwu.scoreboard.ButtonCloseScoreboard;
 import com.katabakuwu.controller.*;
 
 import java.awt.*;
 
+/**
+ * FrameScoreboard class.
+ * 
+ * @author Farhan Arifandi
+ * @author Ryan Garnet Andrianto
+ */
 public class FrameScoreboard extends JFrame {
 
 	private static final long serialVersionUID = 2883848038660074213L;
@@ -48,7 +55,7 @@ public class FrameScoreboard extends JFrame {
 		titlePane.setBounds(10, 70, 446, 39);
 		contentPane.add(titlePane);
 		
-		JList list = new JList();
+		JList<String> list = new JList<String>();
 		list.setModel(new AbstractListModel() {
 			String[] values = new String[] {"#1  Player", "#2  Player", "#3  Player", "#4  Player"};
 			public int getSize() {
@@ -65,11 +72,7 @@ public class FrameScoreboard extends JFrame {
 		list.setBounds(10, 119, 446, 399);
 		contentPane.add(list);
 		
-		JButton closeBtn = new JButton("Close");
-		closeBtn.setForeground(Color.WHITE);
-		closeBtn.setBackground(Color.MAGENTA);
-		closeBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		closeBtn.setBounds(10, 528, 446, 50);
+		ButtonCloseScoreboard closeBtn = new ButtonCloseScoreboard(this, "Close", 10, 528, 446, 50);
 		contentPane.add(closeBtn);
 		
 		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);

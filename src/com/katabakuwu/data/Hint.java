@@ -8,6 +8,7 @@ import javax.swing.JProgressBar;
  * @author Ryan Garnet Andrianto
  */
 public class Hint {
+	private JProgressBar bar;
 	private float value;
 	
 	/**
@@ -16,6 +17,15 @@ public class Hint {
 	 */
 	public Hint(float value) {
 		this.value = value;
+	}
+	
+	/**
+	 * Set hint progress bar.
+	 * 
+	 * @param bar
+	 */
+	public void setBar(JProgressBar bar) {
+		this.bar = bar;
 	}
 	
 	/**
@@ -36,11 +46,20 @@ public class Hint {
 	}
 	
 	/**
+	 * Reduce value
+	 * 
+	 * @param value Value
+	 */
+	public void reduceValue(float value) {
+		setValue(getValue() - value);
+	}
+	
+	/**
 	 * Update progress bar
 	 * 
 	 * @param progressBar
 	 */
-	public void updateProgressBar(JProgressBar progressBar) {
-		progressBar.setValue((int) this.value);
+	public void updateProgressBar() {
+		bar.setValue((int) this.value);
 	}
 }
