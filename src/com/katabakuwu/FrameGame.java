@@ -5,7 +5,7 @@ import javax.swing.border.*;
 
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.data.Player;
-import com.katabakuwu.gameplay.HealthBar;
+import com.katabakuwu.gameplay.*;
 import com.katabakuwu.mainmenu.Cloud;
 
 import java.awt.*;
@@ -58,6 +58,9 @@ public class FrameGame extends JFrame {
 		hintBar.setForeground(Color.ORANGE);
 		hintBar.setBounds(92, 63, 146, 11);
 		contentPane.add(hintBar);
+		
+		TimerBar timerBar = new TimerBar(100, 100, 0, 0, this.getWidth(), 6);
+		contentPane.add(timerBar);
 
 		game.getUser().getPlayer().getHint().updateProgressBar(hintBar);
 		
