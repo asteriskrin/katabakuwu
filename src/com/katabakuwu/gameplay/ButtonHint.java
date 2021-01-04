@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import com.katabakuwu.controller.Game;
+import com.katabakuwu.data.Hint;
 
 
 /**
@@ -41,11 +42,12 @@ public class ButtonHint extends JButton implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(game.getUser().getPlayer().getHint().getValue() < 30.0) {
-			setBackground(Color.LIGHT_GRAY);
-			setEnabled(false);
-		} else {
-			game.getUser().getPlayer().useHint();
+		if(game.getUser().getPlayer().getHint().getValue() <= 30.0) {
+			this.setBackground(Color.LIGHT_GRAY);
+			this.setEnabled(false);
 		}
+		else
+			game.getUser().getPlayer().useHint();
 	}
+	
 }
