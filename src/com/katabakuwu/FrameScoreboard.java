@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import com.katabakuwu.mainmenu.Cloud;
+import com.katabakuwu.scoreboard.ButtonCloseScoreboard;
 import com.katabakuwu.controller.*;
 
 import java.awt.*;
@@ -71,11 +72,7 @@ public class FrameScoreboard extends JFrame {
 		list.setBounds(10, 119, 446, 399);
 		contentPane.add(list);
 		
-		JButton closeBtn = new JButton("Close");
-		closeBtn.setForeground(Color.WHITE);
-		closeBtn.setBackground(Color.MAGENTA);
-		closeBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		closeBtn.setBounds(10, 528, 446, 50);
+		ButtonCloseScoreboard closeBtn = new ButtonCloseScoreboard(this, "Close", 10, 528, 446, 50);
 		contentPane.add(closeBtn);
 		
 		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);
