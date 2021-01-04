@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import com.katabakuwu.mainmenu.ButtonPlay;
+import com.katabakuwu.mainmenu.ButtonScoreboard;
 import com.katabakuwu.mainmenu.Cloud;
 import com.katabakuwu.controller.Game;
 
@@ -51,9 +52,7 @@ public class FrameMainMenu extends JFrame {
 		JButton btnStartGame = new ButtonPlay(game, "Start Game", 10, 306, 446, 60);
 		contentPane.add(btnStartGame);
 		
-		JButton btnScoreboard = new JButton("Scoreboard");
-		btnScoreboard.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnScoreboard.setBounds(10, 386, 446, 60);
+		JButton btnScoreboard = new ButtonScoreboard(game, "Scoreboard", 10, 386, 446, 60);
 		contentPane.add(btnScoreboard);
 		
 		JButton btnSettings = new JButton("Settings");
