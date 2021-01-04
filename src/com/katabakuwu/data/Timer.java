@@ -7,6 +7,7 @@ package com.katabakuwu.data;
  */
 public class Timer {
 	private int duration;
+	private int maxDuration;
 
 	/**
 	 * Constructor
@@ -15,6 +16,7 @@ public class Timer {
 	 */
 	public Timer(int duration) {
 		this.duration = duration;
+		this.maxDuration = duration;
 	}
 	
 	/**
@@ -33,5 +35,23 @@ public class Timer {
 	 */
 	public void setDuration(int duration) {
 		this.duration = duration;
+	}
+	
+	/**
+	 * Get max duration
+	 * 
+	 * @return maxDuration in seconds
+	 */
+	public int getMaxDuration() {
+		return this.maxDuration;
+	}
+	
+	/**
+	 * Set max duration
+	 * 
+	 * @param maxDuration Duration in seconds
+	 */
+	public void setMaxDuration(int duration) {
+		this.maxDuration = duration;
 	}
 }
