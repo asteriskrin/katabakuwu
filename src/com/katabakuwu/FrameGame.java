@@ -49,11 +49,7 @@ public class FrameGame extends JFrame {
 		playerName.setBounds(92, 10, 205, 23);
 		contentPane.add(playerName);
 		
-		JProgressBar healthBar = new JProgressBar();
-		healthBar.setBackground(Color.LIGHT_GRAY);
-		healthBar.setForeground(new Color(51, 204, 0));
-		healthBar.setValue((int) game.getUser().getPlayer().getHealth().getValue());
-		healthBar.setBounds(92, 36, 146, 23);
+		HealthBar healthBar = new HealthBar((int) game.getUser().getPlayer().getHealth().getValue(), 92, 36, 146, 23);
 		contentPane.add(healthBar);
 		
 		JProgressBar hintBar = new JProgressBar();
