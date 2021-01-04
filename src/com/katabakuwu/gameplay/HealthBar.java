@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JProgressBar;
 
+import com.katabakuwu.data.Player;
+
 /**
  * HealthBar class.
  * 
@@ -16,8 +18,8 @@ public class HealthBar extends JProgressBar {
 	/**
 	 * Constructor
 	 */
-	public HealthBar(int initialValue, int x, int y, int width, int height) {
-		value = initialValue;
+	public HealthBar(Player player, int x, int y, int width, int height) {
+		value = (int) player.getHealth().getValue();
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -25,15 +27,7 @@ public class HealthBar extends JProgressBar {
 		
 		setBackground(Color.LIGHT_GRAY);
 		setForeground(new Color(51, 204, 0));
-		setBarValue(initialValue);
-		setBounds(this.x, this.y, this.width, this.height);
-	}
-	
-	/**
-	 * Set value
-	 */
-	public void setBarValue(int value) {
-		this.value = value;
 		setValue(this.value);
+		setBounds(this.x, this.y, this.width, this.height);
 	}
 }
