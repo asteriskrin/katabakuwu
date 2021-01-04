@@ -1,4 +1,4 @@
-package com.katabakuwu;
+package com.katabakuwu.gameplay;
 
 import java.awt.Color;
 

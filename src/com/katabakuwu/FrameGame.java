@@ -5,6 +5,7 @@ import javax.swing.border.*;
 
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.data.Player;
+import com.katabakuwu.gameplay.HealthBar;
 import com.katabakuwu.mainmenu.Cloud;
 
 import java.awt.*;
