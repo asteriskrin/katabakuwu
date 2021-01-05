@@ -32,7 +32,7 @@ public class TimerBar extends JProgressBar {
 		this.maxValue = (int) player.getTimer().getMaxDuration();
 		this.x = x;
 		this.y = y;
-		this.width = width;
+		this.width = width-20;
 		this.height = height;
 		
 		setBackground(Color.LIGHT_GRAY);

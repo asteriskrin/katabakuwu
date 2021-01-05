@@ -35,13 +35,12 @@ public class KeyboardHandler implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		char letter = Character.toUpperCase(e.getKeyChar());
-		// JButton source = (JButton) e.getSource();
+		
 		boolean response = game.getUser().getPlayer().getGuessWord().guess(letter);
 		
 		if(response) {
 			// Guess successful
 			game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText);
-			// source.setEnabled(false);
 		}
 		else {
 			// Guess failed
