@@ -42,7 +42,8 @@ public class ButtonHint extends JButton implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(game.getUser().getPlayer().getHint().getValue() <= 30.0) {
+		if(game.getUser().getPlayer().getHint().getValue() <= 
+				(game.getUser().getPlayer().getTimer().getDuration()/game.getUser().getPlayer().getTimer().getMaxDuration())*75) {
 			this.setBackground(Color.LIGHT_GRAY);
 			this.setEnabled(false);
 		}

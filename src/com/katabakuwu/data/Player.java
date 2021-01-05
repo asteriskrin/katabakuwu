@@ -70,8 +70,8 @@ public class Player {
 	 * Use hint.
 	 */
 	public void useHint() {
-		if(hint.getValue() >= 30.0) {
-			hint.reduceValue((float) 30.0);
+		if(hint.getValue() >= ((float)timer.getDuration()/timer.getMaxDuration())*75) {
+			hint.reduceValue(((float)timer.getDuration()/timer.getMaxDuration())*75);
 			hint.updateProgressBar();
 			System.out.println("USE HINT: " + guessWord.getUnguessedLetter());
 		}
