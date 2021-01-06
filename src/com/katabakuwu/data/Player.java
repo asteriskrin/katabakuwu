@@ -69,14 +69,31 @@ public class Player {
 	/**
 	 * Use hint.
 	 */
+	public boolean isEnoughHintValue() {
+		float cost = (float) timer.getDuration()/timer.getMaxDuration()*75;
+		if(cost < hint.getValue()) return true;
+		return false;
+	}
+	
+	/**
+	 * Use hint.
+	 */
 	public void useHint() {
-		if(hint.getValue() >= 30.0) {
-			hint.reduceValue((float) 30.0);
+		if(this.isEnoughHintValue()) {
+			hint.reduceValue(((float)timer.getDuration()/timer.getMaxDuration())*75);
 			hint.updateProgressBar();
 			System.out.println("USE HINT: " + guessWord.getUnguessedLetter());
 		}
 		else {
 			System.out.println("Insufficient hint point.");
 		}
+	}
+	
+	/*
+	 * Reduce player's HP on wrong guess.
+	 */
+	public void getGuessDamage() {
+		float damage = Math.min(30, timer.getDuration())/timer.getMaxDuration()*25;
+		health.reduceValue(damage);
 	}
 }

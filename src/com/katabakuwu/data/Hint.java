@@ -56,8 +56,6 @@ public class Hint {
 	
 	/**
 	 * Update progress bar
-	 * 
-	 * @param progressBar
 	 */
 	public void updateProgressBar() {
 		bar.setValue((int) this.value);

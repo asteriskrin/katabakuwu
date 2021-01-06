@@ -4,10 +4,13 @@ import java.awt.Color;
 
 import javax.swing.JProgressBar;
 
+import com.katabakuwu.data.*;
+
 /**
  * Timer Bar
  * 
  * @author Ryan Garnet Andrianto
+ * @author Farhan Arifandi
  */
 public class TimerBar extends JProgressBar {
 
@@ -17,19 +20,19 @@ public class TimerBar extends JProgressBar {
 	private static final long serialVersionUID = 1L;
 	
 	private int value;
-	private int max_value;
+	private int maxValue;
 	/**
 	 * By default, the decrement speed is 1/second
 	 */
 	private int decrementSpeed = 1;
 	private int x, y, width, height;
 	
-	public TimerBar(int value, int max_value, int x, int y, int width, int height) {
-		this.value = value;
-		this.max_value = max_value;
+	public TimerBar(Timer timer, int x, int y, int width, int height) {
+		this.value = (int) timer.getDuration();
+		this.maxValue = (int) timer.getMaxDuration();
 		this.x = x;
 		this.y = y;
-		this.width = width;
+		this.width = width-20;
 		this.height = height;
 		
 		setBackground(Color.LIGHT_GRAY);
@@ -42,6 +45,7 @@ public class TimerBar extends JProgressBar {
 				while(true) {
 					decrementValue();
 					updateBarValue();
+					timer.setDuration(value);
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -72,7 +76,7 @@ public class TimerBar extends JProgressBar {
 	 * Update progress bar value.
 	 */
 	public void updateBarValue() {
-		int barValue = (this.value)*(100)/(this.max_value);
+		int barValue = (this.value)*(100)/(this.maxValue);
 		setValue(barValue);
 	}
 }

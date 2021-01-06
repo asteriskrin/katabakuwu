@@ -1,10 +1,14 @@
 package com.katabakuwu.data;
 
+import javax.swing.JProgressBar;
+
 /**
  * Health class.
  * @author Ryan Garnet Andrianto
  */
 public class Health {
+
+	private JProgressBar bar;
 	private float value;
 	
 	/**
@@ -12,6 +16,15 @@ public class Health {
 	 */
 	public Health() {
 		this.value = (float) 100.0;
+	}
+	
+	/**
+	 * Set hint progress bar.
+	 * 
+	 * @param bar
+	 */
+	public void setBar(JProgressBar bar) {
+		this.bar = bar;
 	}
 	
 	/**
@@ -30,5 +43,21 @@ public class Health {
 	 */
 	public void setValue(float value) {
 		this.value = value;
+	}
+	
+	/**
+	 * Reduce value
+	 * 
+	 * @param value Value
+	 */
+	public void reduceValue(float value) {
+		setValue(this.value - value);
+	}
+	
+	/**
+	 * Update progress bar
+	 */
+	public void updateProgressBar() {
+		bar.setValue((int) this.value);
 	}
 }
