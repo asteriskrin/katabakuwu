@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JProgressBar;
 
-import com.katabakuwu.data.Player;
+import com.katabakuwu.data.*;
 
 /**
  * Timer Bar
@@ -27,9 +27,9 @@ public class TimerBar extends JProgressBar {
 	private int decrementSpeed = 1;
 	private int x, y, width, height;
 	
-	public TimerBar(Player player, int x, int y, int width, int height) {
-		this.value = (int) player.getTimer().getDuration();
-		this.maxValue = (int) player.getTimer().getMaxDuration();
+	public TimerBar(Timer timer, int x, int y, int width, int height) {
+		this.value = (int) timer.getDuration();
+		this.maxValue = (int) timer.getMaxDuration();
 		this.x = x;
 		this.y = y;
 		this.width = width-20;
@@ -45,7 +45,7 @@ public class TimerBar extends JProgressBar {
 				while(true) {
 					decrementValue();
 					updateBarValue();
-					player.getTimer().setDuration(value);
+					timer.setDuration(value);
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {

@@ -49,7 +49,7 @@ public class FrameGame extends JFrame {
 		playerName.setBounds(92, 10, 205, 23);
 		contentPane.add(playerName);
 		
-		HealthBar healthBar = new HealthBar(game.getUser().getPlayer(), 92, 36, 146, 23);
+		HealthBar healthBar = new HealthBar(game.getUser().getPlayer().getHealth(), 92, 36, 146, 23);
 		contentPane.add(healthBar);
 		player.getHealth().setBar(healthBar);
 		
@@ -57,7 +57,7 @@ public class FrameGame extends JFrame {
 		contentPane.add(hintBar);
 		player.getHint().setBar(hintBar);
 		
-		TimerBar timerBar = new TimerBar(game.getUser().getPlayer(), 0, 0, this.getWidth(), 6);
+		TimerBar timerBar = new TimerBar(game.getUser().getPlayer().getTimer(), 0, 0, this.getWidth(), 6);
 		contentPane.add(timerBar);
 
 		player.getHint().updateProgressBar();
