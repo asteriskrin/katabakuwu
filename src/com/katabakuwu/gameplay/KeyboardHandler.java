@@ -45,9 +45,7 @@ public class KeyboardHandler implements KeyListener {
 		else {
 			// Guess failed
 			System.out.println("Guess Failed");
-			game.getUser().getPlayer().getHealth().reduceValue(
-				((float)Math.min(30, game.getUser().getPlayer().getTimer().getDuration())/game.getUser().getPlayer().getTimer().getMaxDuration())*25
-			);
+			game.getUser().getPlayer().getGuessDamage();
 			game.getUser().getPlayer().getHealth().updateProgressBar();
 		}
 	}

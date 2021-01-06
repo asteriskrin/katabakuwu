@@ -79,4 +79,9 @@ public class Player {
 			System.out.println("Insufficient hint point.");
 		}
 	}
+	
+	public void getGuessDamage() {
+		float damage = Math.min(30, timer.getDuration())/timer.getMaxDuration()*25;
+		health.reduceValue(damage);
+	}
 }
