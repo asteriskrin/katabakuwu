@@ -20,7 +20,12 @@ public class Main {
 					frame.setVisible(true);
 					
 					String name = JOptionPane.showInputDialog("Masukkan nama: ");
+					while(name == null || name.isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Nama tidak boleh kosong");
+						name = JOptionPane.showInputDialog("Masukkan nama: ");
+					}
 					game.getUser().setName(name);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
