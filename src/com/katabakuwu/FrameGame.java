@@ -74,14 +74,7 @@ public class FrameGame extends JFrame {
 		ButtonHint hintBtn = new ButtonHint(game, 10, 292, 60, 60);
 		contentPane.add(hintBtn);
 		
-		JTextField guessTextPane = new JTextField();
-		guessTextPane.setEditable(false);
-		guessTextPane.setHorizontalAlignment(SwingConstants.CENTER);
-		guessTextPane.setFont(new Font("Arial", Font.PLAIN, 24));
-		
-		guessTextPane.setText("");
-		guessTextPane.setBackground(new Color(255, 0, 255, 50));
-		guessTextPane.setBounds(10, 362, 446, 50);
+		JTextField guessTextPane = new GuessTextPane(10, 362, 446, 50);
 		contentPane.add(guessTextPane);
 		
 		game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessTextPane);
