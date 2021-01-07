@@ -54,4 +54,13 @@ public class Timer {
 	public void setMaxDuration(int duration) {
 		this.maxDuration = duration;
 	}
+	
+	/**
+	 * Increase duration
+	 * 
+	 * @param value Value
+	 */
+	public void increaseDuration(int value) {
+		setDuration(this.duration + value);
+	}
 }

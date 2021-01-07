@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import com.katabakuwu.GameKeyboard;
 import com.katabakuwu.controller.Game;
 
 /**
@@ -19,10 +20,12 @@ import com.katabakuwu.controller.Game;
 public class ButtonKeyHandler implements ActionListener {
 	private Game game;
 	private JTextField guessText;
+	private GameKeyboard gameKeyboard;
 	
-	public ButtonKeyHandler(Game game, JTextField guessText) {
+	public ButtonKeyHandler(Game game, JTextField guessText, GameKeyboard gameKeyboard) {
 		this.game = game;
 		this.guessText = guessText;
+		this.gameKeyboard = gameKeyboard;
 	}
 	
 	@Override
@@ -36,13 +39,24 @@ public class ButtonKeyHandler implements ActionListener {
 			// Guess successful
 			game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText);
 			source.setEnabled(false);
+			
+			if(game.getUser().getPlayer().getGuessWord().isWordGuessed() && game.getUser().getPlayer().getTimer().getDuration()>0) {
+				
+				for(JButton j : gameKeyboard.keyboard) j.setEnabled(true);
+				
+				game.getUser().getPlayer().getBonus();
+				game.getUser().getPlayer().getGuessWord().getNewWord(guessText);
+				game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText);
+			}
 		}
+		
 		else {
 			// Guess failed
 			System.out.println("Guess Failed");
 			game.getUser().getPlayer().getGuessDamage();
 			game.getUser().getPlayer().getHealth().updateProgressBar();
 		}
+		
 	}
 
 }

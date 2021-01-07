@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
+import com.katabakuwu.server.WordDatabase;
+
 /**
  * Guess Word
  * Class that handles letters in guess word.
@@ -11,10 +13,13 @@ import javax.swing.JTextField;
  * @author Ryan Garnet Andrianto
  */
 public class GuessWord {
-	private ArrayList<Letter> letters;
+	public ArrayList<Letter> letters;
+	private WordDatabase wordDb;
+	public Word displayedWord;
 	
 	public GuessWord() {
 		letters = new ArrayList<Letter>();
+		wordDb = new WordDatabase();
 	}
 	
 	/**
@@ -22,18 +27,22 @@ public class GuessWord {
 	 * 
 	 * @param word
 	 */
-	public void setWord(String word) {
-		for(int i = 0; i < word.length(); i++) {
-			letters.add(new Letter(word.charAt(i), false));
+	public void setWord() {
+		Word word = wordDb.getRandomWord();
+		if(!word.getStatus()) {
+			for(int i = 0; i < word.getWord().length(); i++) {
+				letters.add(new Letter(word.getWord().charAt(i), false));
+			}
 		}
+		this.displayedWord = word;
 	}
 	
 	/**
-	 * Get word.
+	 * Build word display on text pane.
 	 * 
 	 * @return String
 	 */
-	public String getWord() {
+	public String buildWord() {
 		StringBuilder word = new StringBuilder();
 		for(int i = 0; i < letters.size(); i++) {
 			Letter tempLetter = letters.get(i);
@@ -53,7 +62,19 @@ public class GuessWord {
 	 * @param textField
 	 */
 	public void updateWordDisplay(JTextField textField) {
-		textField.setText(getWord());
+		textField.setText(buildWord());
+	}
+	
+	/**
+	 * Clear word display and letter array list, get new word.
+	 * 
+	 * @param textField
+	 */
+	public void getNewWord(JTextField textField) {
+		textField.setText("");
+	    for(Letter l : letters) l.setStatus(false);
+	    letters.clear();
+	    setWord();
 	}
 	
 	/**
@@ -77,7 +98,6 @@ public class GuessWord {
 				isFound = true;
 			}
 		}
-		
 		return isFound;
 	}
 	
@@ -96,4 +116,19 @@ public class GuessWord {
 		}
 		return '\0';
 	}
+	
+	/**
+	 * Check if all the letters in a word have been guessed.
+	 * 
+	 * @return boolean
+	 */
+	public boolean isWordGuessed() {
+	    for(Letter l : letters) {
+	        if(!l.getStatus())
+	            return false;
+	    }
+	    this.displayedWord.setStatus(true);
+	    return true;
+	}
+	
 }

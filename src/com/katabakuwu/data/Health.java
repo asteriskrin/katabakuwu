@@ -55,6 +55,16 @@ public class Health {
 	}
 	
 	/**
+	 * Increase value
+	 * 
+	 * @param value Value
+	 */
+	public void increaseValue(float value) {
+		setValue(this.value + value);
+		if(this.value > 100) this.value = 100;
+	}
+	
+	/**
 	 * Update progress bar
 	 */
 	public void updateProgressBar() {

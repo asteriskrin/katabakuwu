@@ -28,6 +28,7 @@ public class TimerBar extends JProgressBar {
 	private int x, y, width, height;
 	
 	public TimerBar(Timer timer, int x, int y, int width, int height) {
+		
 		this.value = (int) timer.getDuration();
 		this.maxValue = (int) timer.getMaxDuration();
 		this.x = x;
@@ -77,6 +78,7 @@ public class TimerBar extends JProgressBar {
 	 */
 	public void updateBarValue() {
 		int barValue = (this.value)*(100)/(this.maxValue);
+		if(barValue > 100) barValue = 100;
 		setValue(barValue);
 	}
 }

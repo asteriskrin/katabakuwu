@@ -6,6 +6,7 @@ import com.katabakuwu.gameplay.GuessWord;
  * Player class.
  * 
  * @author Ryan Garnet Andrianto
+ * @author FARHAN
  */
 public class Player {
 	private Health health;
@@ -19,7 +20,7 @@ public class Player {
 	 */
 	public Player() {
 		health = new Health();
-		timer = new Timer(300);
+		timer = new Timer(150);
 		this.hint = new Hint((float)100.0);
 		this.score = 0;
 		guessWord = new GuessWord();
@@ -29,8 +30,8 @@ public class Player {
 	 * Get score
 	 * @return Score
 	 */
-	public int getScore() {
-		return this.score;
+	public String getScore() {
+		return String.format("%06d", this.score);
 	}
 	
 	/**
@@ -93,7 +94,22 @@ public class Player {
 	 * Reduce player's HP on wrong guess.
 	 */
 	public void getGuessDamage() {
-		float damage = Math.min(30, timer.getDuration())/timer.getMaxDuration()*25;
+		float damage = (float) Math.min(30, timer.getDuration())/timer.getMaxDuration()*25;
 		health.reduceValue(damage);
+	}
+	
+	/*
+	 * Get hint & health bonus on correct guess
+	 */
+	public void getBonus() {
+		float bonus = (float) timer.getDuration()/timer.getMaxDuration()*30;
+		
+		hint.increaseValue(bonus);
+		health.increaseValue(bonus);
+		//timer.increaseDuration(10);
+		
+		hint.updateProgressBar();
+		health.updateProgressBar();
+		score += timer.getDuration();
 	}
 }
