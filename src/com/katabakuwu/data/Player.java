@@ -30,8 +30,8 @@ public class Player {
 	 * Get score
 	 * @return Score
 	 */
-	public String getScore() {
-		return String.format("%06d", this.score);
+	public int getScore() {
+		return this.score;
 	}
 	
 	/**

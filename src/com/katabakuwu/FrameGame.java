@@ -62,7 +62,14 @@ public class FrameGame extends JFrame {
 
 		player.getHint().updateProgressBar();
 		
-		ScoreLabel scoreLabel = new ScoreLabel(contentPane, game.getUser().getPlayer().getScore());
+		JLabel scoreLabel = new JLabel();
+		scoreLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		scoreLabel.setVerticalAlignment(SwingConstants.TOP);
+		scoreLabel.setFont(new Font("Agency FB", Font.BOLD, 36));
+		scoreLabel.setBounds(307, 10, 149, 49);
+		contentPane.add(scoreLabel);
+		
+		scoreLabel.setText(String.format("%06d", game.getUser().getPlayer().getScore()));
 		
 		ButtonHint hintBtn = new ButtonHint(game, 10, 292, 60, 60);
 		contentPane.add(hintBtn);
