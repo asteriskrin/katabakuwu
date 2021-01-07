@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
-import com.katabakuwu.controller.Game;
-import com.katabakuwu.server.WordDatabase;
-
 /**
  * Guess Word
  * Class that handles letters in guess word.
@@ -23,13 +20,12 @@ public class GuessWord {
 	/**
 	 * Set word.
 	 * 
-	 * @param word.
+	 * @param word
 	 */
-	public void setWord(Word word) {
-		for(int i = 0; i < word.getWord().length() ; i++) {
-			letters.add(new Letter(word.getWord().charAt(i), false));
+	public void setWord(String word) {
+		for(int i = 0; i < word.length(); i++) {
+			letters.add(new Letter(word.charAt(i), false));
 		}
-		isWordGuessed();
 	}
 	
 	/**
@@ -81,6 +77,7 @@ public class GuessWord {
 				isFound = true;
 			}
 		}
+		
 		return isFound;
 	}
 	
@@ -98,13 +95,5 @@ public class GuessWord {
 			return letters.get(i).getLetter();
 		}
 		return '\0';
-	}
-	
-	public boolean isWordGuessed() {
-	    for(Letter l : letters) {
-	        if(!l.getStatus())
-	            return false;
-	    }
-	    return true;
 	}
 }
