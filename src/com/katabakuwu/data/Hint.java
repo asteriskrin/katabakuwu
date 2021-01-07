@@ -6,6 +6,7 @@ import javax.swing.JProgressBar;
  * Hint class.
  * 
  * @author Ryan Garnet Andrianto
+ * @author FARHAN
  */
 public class Hint {
 	private JProgressBar bar;

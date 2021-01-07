@@ -5,6 +5,7 @@ import javax.swing.JProgressBar;
 /**
  * Health class.
  * @author Ryan Garnet Andrianto
+ * @author FARHAN
  */
 public class Health {
 

@@ -69,7 +69,8 @@ public class FrameGame extends JFrame {
 		scoreLabel.setBounds(307, 10, 149, 49);
 		contentPane.add(scoreLabel);
 		
-		scoreLabel.setText(String.format("%06d", game.getUser().getPlayer().getScore()));
+		player.getScore().setLabel(scoreLabel);
+		player.getScore().updateScore();
 		
 		ButtonHint hintBtn = new ButtonHint(game, 10, 292, 60, 60);
 		contentPane.add(hintBtn);

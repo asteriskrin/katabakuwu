@@ -12,7 +12,7 @@ public class Player {
 	private Health health;
 	private Timer timer;
 	private Hint hint;
-	private int score;
+	private Score score;
 	private GuessWord guessWord;
 	
 	/**
@@ -22,7 +22,7 @@ public class Player {
 		health = new Health();
 		timer = new Timer(150);
 		this.hint = new Hint((float)100.0);
-		this.score = 0;
+		this.score = new Score(0);
 		guessWord = new GuessWord();
 	}
 	
@@ -30,7 +30,7 @@ public class Player {
 	 * Get score
 	 * @return Score
 	 */
-	public int getScore() {
+	public Score getScore() {
 		return this.score;
 	}
 	
@@ -106,10 +106,11 @@ public class Player {
 		
 		hint.increaseValue(bonus);
 		health.increaseValue(bonus);
-		//timer.increaseDuration(10);
+		score.increaseScore(timer.getDuration());
+		timer.increaseDuration(10);
 		
 		hint.updateProgressBar();
 		health.updateProgressBar();
-		score += timer.getDuration();
+		score.updateScore();
 	}
 }
