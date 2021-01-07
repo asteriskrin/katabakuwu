@@ -7,9 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import com.katabakuwu.FrameGame;
 import com.katabakuwu.FrameScoreboard;
-import com.katabakuwu.controller.Game;
 
 /**
  * ButtonCloseScoreboard class.

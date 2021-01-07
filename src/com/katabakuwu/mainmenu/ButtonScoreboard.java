@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-
-import com.katabakuwu.FrameGame;
 import com.katabakuwu.FrameScoreboard;
 import com.katabakuwu.controller.Game;
 
@@ -16,8 +14,20 @@ import com.katabakuwu.controller.Game;
  * @author Ryan Garnet Andrianto
  */
 public class ButtonScoreboard extends JButton implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
 	private Game game;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param game Game class instance
+	 * @param text Button text
+	 * @param x Button position x
+	 * @param y Button position y
+	 * @param width Button width
+	 * @param height Button height
+	 */
 	public ButtonScoreboard(Game game, String text, int x, int y, int width, int height) {
 		super(text);
 		
@@ -28,13 +38,18 @@ public class ButtonScoreboard extends JButton implements ActionListener {
 		this.addActionListener(this);
 	}
 	
+	/**
+	 * Button click action.
+	 * 
+	 * @param e Button action event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			FrameScoreboard frame = new FrameScoreboard(this.game);
+			FrameScoreboard frame = new FrameScoreboard(game.getUser());
 			frame.setVisible(true);
-		} catch(Exception e2) {
-			// do something here
+		} catch (Exception e2) {
+			
 		}
 	}
 	
