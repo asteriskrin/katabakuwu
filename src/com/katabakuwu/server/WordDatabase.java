@@ -3,8 +3,6 @@ package com.katabakuwu.server;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.katabakuwu.gameplay.Word;
-
 /**
  * Word Database.
  * This class stores words.
@@ -12,20 +10,16 @@ import com.katabakuwu.gameplay.Word;
  * @author Ryan Garnet Andrianto
  */
 public class WordDatabase {
-	private ArrayList<Word> words;
+	private ArrayList<String> words;
 	
 	/**
 	 * Constructor
 	 */
 	public WordDatabase() {
-		words = new ArrayList<Word>();
-		words.add(new Word("APEL"));
-		words.add(new Word("JERUK"));
-		words.add(new Word("PISANG"));
-		words.add(new Word("SEMANGKA"));
-		words.add(new Word("PEPAYA"));
-		words.add(new Word("JAMBU"));
-		words.add(new Word("MANGGA"));
+		words = new ArrayList<String>();
+		words.add("APEL");
+		words.add("JERUK");
+		words.add("PISANG");
 	}
 	
 	/**
@@ -33,14 +27,11 @@ public class WordDatabase {
 	 * 
 	 * @return Word as string
 	 */
-	public Word getRandomWord() {
+	public String getRandomWord() {
 		Random rand = new Random();
 		
-		while(true) {
-			int pos = rand.nextInt(words.size());
-			if(!words.get(pos).getStatus()) {
-				return words.get(pos);
-			}
-		}
+		int pos = rand.nextInt(words.size());
+		
+		return words.get(pos);
 	}
 }
