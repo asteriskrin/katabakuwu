@@ -3,6 +3,7 @@ package com.katabakuwu;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import com.katabakuwu.mainmenu.BGM_MainMenu;
 import com.katabakuwu.mainmenu.ButtonPlay;
 import com.katabakuwu.mainmenu.ButtonScoreboard;
 import com.katabakuwu.mainmenu.Cloud;
@@ -20,7 +21,6 @@ public class FrameMainMenu extends JFrame {
 
 	private static final long serialVersionUID = 2883848038660074213L;
 	private JPanel contentPane;
-
 	/**
 	 * Create the frame.
 	 * 
@@ -65,5 +65,8 @@ public class FrameMainMenu extends JFrame {
 		
 		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
 		contentPane.add(cloud2);
+		
+		BGM_MainMenu bgm = new BGM_MainMenu();
+		bgm.start();
 	}
 }
