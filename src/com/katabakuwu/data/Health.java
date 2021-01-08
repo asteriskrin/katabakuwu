@@ -5,6 +5,7 @@ import javax.swing.JProgressBar;
 /**
  * Health class.
  * @author Ryan Garnet Andrianto
+ * @author FARHAN
  */
 public class Health {
 
@@ -52,6 +53,16 @@ public class Health {
 	 */
 	public void reduceValue(float value) {
 		setValue(this.value - value);
+	}
+	
+	/**
+	 * Increase value
+	 * 
+	 * @param value Value
+	 */
+	public void increaseValue(float value) {
+		setValue(this.value + value);
+		if(this.value > 100) this.value = 100;
 	}
 	
 	/**

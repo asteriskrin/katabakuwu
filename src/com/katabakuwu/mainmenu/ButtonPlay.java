@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import com.katabakuwu.FrameGame;
 import com.katabakuwu.controller.Game;
@@ -32,6 +33,7 @@ public class ButtonPlay extends JButton implements ActionListener {
 		try {
 			FrameGame frame = new FrameGame(this.game);
 			frame.setVisible(true);
+			game.getWordDatabase().clearStatus();
 		} catch(Exception e2) {
 			// do something here
 		}
