@@ -21,6 +21,7 @@ public class TimerBar extends JProgressBar {
 	
 	private int value;
 	private int maxValue;
+	private Timer timer;
 	/**
 	 * By default, the decrement speed is 1/second
 	 */
@@ -28,7 +29,7 @@ public class TimerBar extends JProgressBar {
 	private int x, y, width, height;
 	
 	public TimerBar(Timer timer, int x, int y, int width, int height) {
-		
+		this.timer = timer;
 		this.value = (int) timer.getDuration();
 		this.maxValue = (int) timer.getMaxDuration();
 		this.x = x;

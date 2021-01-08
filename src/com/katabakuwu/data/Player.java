@@ -109,8 +109,11 @@ public class Player {
 		score.increaseScore(timer.getDuration());
 		timer.increaseDuration(10);
 		
+		
 		hint.updateProgressBar();
 		health.updateProgressBar();
 		score.updateScore();
 	}
+	
+	
 }

@@ -3,7 +3,7 @@ package com.katabakuwu.data;
 /**
  * Timer class.
  * @author Ryan Garnet Andrianto
- *
+ * @author FARHAN
  */
 public class Timer {
 	private int duration;

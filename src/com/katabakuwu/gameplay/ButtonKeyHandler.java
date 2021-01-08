@@ -47,6 +47,9 @@ public class ButtonKeyHandler implements ActionListener {
 				game.getUser().getPlayer().getBonus();
 				game.getUser().getPlayer().getGuessWord().getNewWord(guessText);
 				game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText);
+
+				game.getUser().increaseLevel();
+				game.getUser().updateLevel();
 			}
 		}
 		

@@ -49,6 +49,9 @@ public class FrameGame extends JFrame {
 		playerName.setBounds(92, 10, 205, 23);
 		contentPane.add(playerName);
 		
+		game.getUser().setLevelLabel(playerName);
+		game.getUser().updateLevel();
+		
 		HealthBar healthBar = new HealthBar(game.getUser().getPlayer().getHealth(), 92, 36, 146, 23);
 		contentPane.add(healthBar);
 		player.getHealth().setBar(healthBar);
