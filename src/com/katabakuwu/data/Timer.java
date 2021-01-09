@@ -1,5 +1,7 @@
 package com.katabakuwu.data;
 
+import javax.swing.JProgressBar;
+
 /**
  * Timer class.
  * @author Ryan Garnet Andrianto
@@ -8,6 +10,7 @@ package com.katabakuwu.data;
 public class Timer {
 	private int duration;
 	private int maxDuration;
+	private JProgressBar bar;
 
 	/**
 	 * Constructor
@@ -17,6 +20,15 @@ public class Timer {
 	public Timer(int duration) {
 		this.duration = duration;
 		this.maxDuration = duration;
+	}
+	
+	/**
+	 * Set timer progress bar.
+	 * 
+	 * @param bar
+	 */
+	public void setBar(JProgressBar bar) {
+		this.bar = bar;
 	}
 	
 	/**
@@ -62,5 +74,15 @@ public class Timer {
 	 */
 	public void increaseDuration(int value) {
 		setDuration(this.duration + value);
+		updateProgressBar();
+	}
+	
+	/**
+	 * Update progress bar
+	 */
+	public void updateProgressBar() {
+		int barValue = (this.duration)*(100)/(this.maxDuration);
+		if(barValue > 100) barValue = 100;
+		bar.setValue(barValue);
 	}
 }
