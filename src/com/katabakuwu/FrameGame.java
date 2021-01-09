@@ -62,7 +62,6 @@ public class FrameGame extends JFrame {
 		
 		TimerBar timerBar = new TimerBar(game.getUser().getPlayer().getTimer(), 0, 0, this.getWidth(), 6);
 		contentPane.add(timerBar);
-		player.getTimer().setBar(timerBar);
 
 		player.getHint().updateProgressBar();
 		

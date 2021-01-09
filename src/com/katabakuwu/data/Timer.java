@@ -11,6 +11,11 @@ public class Timer {
 	private int duration;
 	private int maxDuration;
 	private JProgressBar bar;
+	
+	/**
+	 * By default, the decrement speed is 1/second
+	 */
+	private int decrementSpeed = 1;
 
 	/**
 	 * Constructor
@@ -47,6 +52,7 @@ public class Timer {
 	 */
 	public void setDuration(int duration) {
 		this.duration = duration;
+		if(this.duration > this.maxDuration) this.duration = this.maxDuration;
 	}
 	
 	/**
@@ -84,5 +90,12 @@ public class Timer {
 		int barValue = (this.duration)*(100)/(this.maxDuration);
 		if(barValue > 100) barValue = 100;
 		bar.setValue(barValue);
+	}
+	
+	/**
+	 * Decrement progress bar value.
+	 */
+	public void decrementValue() {
+		setDuration((this.duration > this.decrementSpeed) ? (this.duration - this.decrementSpeed) : (0));
 	}
 }
