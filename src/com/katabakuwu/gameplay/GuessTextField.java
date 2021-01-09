@@ -6,8 +6,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class GuessTextPane extends JTextField{
-	public GuessTextPane(int x, int y, int width, int height) {
+public class GuessTextField extends JTextField{
+	public GuessTextField(int x, int y, int width, int height) {
 		
 		setBounds(x, y, width, height);
 		setHorizontalAlignment(SwingConstants.CENTER);
