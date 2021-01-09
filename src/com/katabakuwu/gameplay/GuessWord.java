@@ -46,7 +46,7 @@ public class GuessWord {
 				int rand = ThreadLocalRandom.current().nextInt(0, letters.size());
 				letters.get(rand).setStatus(true);
 				
-				if(letters.size() > 10) {
+				if(letters.size() >= 10) {
 					int rand2 = ThreadLocalRandom.current().nextInt(0, letters.size());
 					while (rand2 == rand) rand2 = ThreadLocalRandom.current().nextInt(0, letters.size());
 					letters.get(rand2).setStatus(true);

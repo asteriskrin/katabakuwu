@@ -133,7 +133,7 @@ public class WordDatabase {
 		words.add(new Word("NYAMUK", "hewan"));
 		words.add(new Word("LALAT", "hewan"));
 		words.add(new Word("BABI", "hewan"));
-		words.add(new Word("KECOA", "hewan"));
+		words.add(new Word("KECOAK", "hewan"));
 		words.add(new Word("KATAK", "hewan"));
 		words.add(new Word("IKAN", "hewan"));
 		words.add(new Word("KUDA LAUT", "hewan"));
@@ -154,6 +154,7 @@ public class WordDatabase {
 		words.add(new Word("BURUNG", "hewan"));
 		words.add(new Word("RUSA", "hewan"));
 		words.add(new Word("KIJANG", "hewan"));
+		words.add(new Word("KANGURU", "hewan"));
 		words.add(new Word("BERUANG", "hewan"));
 		words.add(new Word("GAJAH", "hewan"));
 		words.add(new Word("KELELAWAR", "hewan"));
