@@ -1,7 +1,7 @@
 package com.katabakuwu.gameplay;
 
 /**
- * Letter
+ * Word
  * 
  * @author Farhan Arifandi
  */
@@ -13,19 +13,21 @@ public class Word {
 	 * False = Not guessed
 	 */
 	private boolean status;
+	private String clue;
 	
 	/**
 	 * Constructor.
 	 * 
 	 * @param word
 	 */
-	public Word(String word) {
+	public Word(String word, String clue) {
 		this.word = word;
 		this.status = false;
+		this.clue = clue;
 	}
 	
 	/**
-	 * Set letter status.
+	 * Set word status.
 	 * 
 	 * @param status
 	 */
@@ -34,7 +36,7 @@ public class Word {
 	}
 	
 	/**
-	 * Get letter status.
+	 * Get word status.
 	 * 
 	 * @return Status
 	 */
@@ -43,11 +45,20 @@ public class Word {
 	}
 	
 	/**
-	 * Get letter.
+	 * Get word string.
 	 * 
-	 * @return Letter
+	 * @return String word
 	 */
 	public String getWord() {
 		return this.word;
+	}
+	
+	/**
+	 * Get clue.
+	 * 
+	 * @return String clue
+	 */
+	public String getClue() {
+		return this.clue;
 	}
 }
