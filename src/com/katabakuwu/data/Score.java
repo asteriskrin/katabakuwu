@@ -61,6 +61,7 @@ public class Score {
 	 */
 	public void increaseScore(int value) {
 		setScore(this.score + value);
+		updateScore();
 	}
 	
 	/**

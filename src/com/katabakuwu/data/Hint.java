@@ -53,6 +53,7 @@ public class Hint {
 	 */
 	public void reduceValue(float value) {
 		setValue(getValue() - value);
+		updateProgressBar();
 	}
 	
 	/**
@@ -63,6 +64,7 @@ public class Hint {
 	public void increaseValue(float value) {
 		setValue(this.value + value);
 		if(this.value > 100) this.value = 100;
+		updateProgressBar();
 	}
 	
 	/**
