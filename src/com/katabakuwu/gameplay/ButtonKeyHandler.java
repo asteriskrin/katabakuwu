@@ -19,12 +19,13 @@ import com.katabakuwu.controller.Game;
 
 public class ButtonKeyHandler implements ActionListener {
 	private Game game;
-	private JTextField guessText;
+	private JTextField guessText, clue;
 	private GameKeyboard gameKeyboard;
 	
-	public ButtonKeyHandler(Game game, JTextField guessText, GameKeyboard gameKeyboard) {
+	public ButtonKeyHandler(Game game, JTextField guessText, JTextField clue, GameKeyboard gameKeyboard) {
 		this.game = game;
 		this.guessText = guessText;
+		this.clue = clue;
 		this.gameKeyboard = gameKeyboard;
 	}
 	
@@ -37,17 +38,17 @@ public class ButtonKeyHandler implements ActionListener {
 		
 		if(response) {
 			// Guess successful
-			game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText);
-			source.setEnabled(false);
+			game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
 			
+			source.setEnabled(false);
 			if(game.getUser().getPlayer().getGuessWord().isWordGuessed() && game.getUser().getPlayer().getTimer().getDuration()>0) {
 				
 				for(JButton j : gameKeyboard.keyboard) j.setEnabled(true);
 				
 				game.getUser().getPlayer().getBonus();
-				game.getUser().getPlayer().getGuessWord().getNewWord(guessText);
-				game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText);
-
+				game.getUser().getPlayer().getGuessWord().getNewWord(guessText, clue);
+				game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
+				
 				game.getUser().increaseLevel();
 				game.getUser().updateLevel();
 			}
@@ -56,6 +57,8 @@ public class ButtonKeyHandler implements ActionListener {
 		else {
 			// Guess failed
 			System.out.println("Guess Failed");
+
+			source.setEnabled(false);
 			game.getUser().getPlayer().getGuessDamage();
 			game.getUser().getPlayer().getHealth().updateProgressBar();
 		}
