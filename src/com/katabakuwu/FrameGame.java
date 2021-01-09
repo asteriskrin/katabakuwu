@@ -79,20 +79,22 @@ public class FrameGame extends JFrame {
 		ButtonHint hintBtn = new ButtonHint(game, 10, 292, 60, 60);
 		contentPane.add(hintBtn);
 		
-		JTextField guessTextPane = new GuessTextPane(10, 362, 446, 50);
-		contentPane.add(guessTextPane);
+		GuessTextField guessTextField = new GuessTextField(10, 362, 446, 50);
+		contentPane.add(guessTextField);
+		
+		ClueField clueField = new ClueField(10, 170, 446, 50);
+		contentPane.add(clueField);
 		
 		game.getUser().getPlayer().getGuessWord().setWord();
-		game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessTextPane);
+		game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessTextField, clueField);
 
-		GameKeyboard gameKeyboard = new GameKeyboard(contentPane, game, guessTextPane);
+		GameKeyboard gameKeyboard = new GameKeyboard(contentPane, game, guessTextField, clueField);
 		
 		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);
 		contentPane.add(cloud1);
 		
 		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
 		contentPane.add(cloud2);
-		
 		
 	}
 }
