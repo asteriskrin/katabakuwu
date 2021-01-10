@@ -10,10 +10,13 @@ import com.katabakuwu.mainmenu.Cloud;
 
 import java.awt.*;
 
+/**
+ * Frame Game.
+ */
 public class FrameGame extends JFrame {
 
 	private static final long serialVersionUID = 2883848038660074213L;
-	private JPanel contentPane;
+	private PanelSky contentPane;
 	/**
 	 * Create the frame.
 	 * 
@@ -28,11 +31,8 @@ public class FrameGame extends JFrame {
 		Player player = new Player();
 		game.getUser().setPlayer(player);
 		
-		contentPane = new JPanel();
-		contentPane.setBackground(Color.decode("#87CEEB"));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane = new PanelSky();
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JLabel profileImg = new JLabel();
 		profileImg.setLocation(10, 10);
