@@ -1,8 +1,10 @@
 package com.katabakuwu.gameplay;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 import com.katabakuwu.server.WordDatabase;
 
@@ -11,6 +13,7 @@ import com.katabakuwu.server.WordDatabase;
  * Class that handles letters in guess word.
  * 
  * @author Ryan Garnet Andrianto
+ * @author FARHAN
  */
 public class GuessWord {
 	public ArrayList<Letter> letters;
@@ -31,10 +34,25 @@ public class GuessWord {
 		Word word = wordDb.getRandomWord();
 		if(!word.getStatus()) {
 			for(int i = 0; i < word.getWord().length(); i++) {
-				letters.add(new Letter(word.getWord().charAt(i), false));
+				if(word.getWord().charAt(i) >= 'A' && word.getWord().charAt(i) <= 'Z')
+					letters.add(new Letter(word.getWord().charAt(i), false));
+				else
+					letters.add(new Letter(word.getWord().charAt(i), true));
+			}
+
+			this.displayedWord = word;
+			
+			if(letters.size() >= 5) {
+				int rand = ThreadLocalRandom.current().nextInt(0, letters.size());
+				letters.get(rand).setStatus(true);
+				
+				if(letters.size() >= 10) {
+					int rand2 = ThreadLocalRandom.current().nextInt(0, letters.size());
+					while (rand2 == rand) rand2 = ThreadLocalRandom.current().nextInt(0, letters.size());
+					letters.get(rand2).setStatus(true);
+				}
 			}
 		}
-		this.displayedWord = word;
 	}
 	
 	/**
@@ -44,16 +62,32 @@ public class GuessWord {
 	 */
 	public String buildWord() {
 		StringBuilder word = new StringBuilder();
+		
 		for(int i = 0; i < letters.size(); i++) {
 			Letter tempLetter = letters.get(i);
-			if(tempLetter.getStatus()) {
-				word.append(tempLetter.getLetter());
-			}
-			else {
-				word.append('_');
-			}
+			
+			if(!(letters.get(i).getLetter() >= 'A' && letters.get(i).getLetter() <= 'Z') || tempLetter.getStatus())
+				if(letters.get(i).getLetter() != ' ')
+					word.append(tempLetter.getLetter());
+				else
+					word.append("   ");
+			else
+				if (i == letters.size()-1) word.append("_");
+				else word.append("_ ");
 		}
 		return word.toString();
+	}
+	
+	/**
+	 * Build clue display on text pane.
+	 * 
+	 * @return String
+	 */
+	public String buildClue() {
+		StringBuilder clue = new StringBuilder();
+		clue.append("Petunjuk: ");
+		clue.append(displayedWord.getClue());
+		return clue.toString();
 	}
 	
 	/**
@@ -61,8 +95,9 @@ public class GuessWord {
 	 * 
 	 * @param textField
 	 */
-	public void updateWordDisplay(JTextField textField) {
-		textField.setText(buildWord());
+	public void updateWordDisplay(JTextField word, JTextField clue) {
+		word.setText(buildWord());
+		clue.setText(buildClue());
 	}
 	
 	/**
@@ -70,7 +105,7 @@ public class GuessWord {
 	 * 
 	 * @param textField
 	 */
-	public void getNewWord(JTextField textField) {
+	public void getNewWord(JTextField textField, JTextField clue) {
 		textField.setText("");
 	    for(Letter l : letters) l.setStatus(false);
 	    letters.clear();

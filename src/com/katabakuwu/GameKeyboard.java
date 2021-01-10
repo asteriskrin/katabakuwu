@@ -25,7 +25,7 @@ public class GameKeyboard extends JPanel {
 	private static final long serialVersionUID = -3469049637633070238L;
 	public ArrayList<JButton> keyboard;
 	
-	public GameKeyboard(JPanel contentPane, Game game, JTextField guessTextPane) {
+	public GameKeyboard(JPanel contentPane, Game game, JTextField guessTextField, JTextField clueField) {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.decode("#89cc9b"));
@@ -39,7 +39,7 @@ public class GameKeyboard extends JPanel {
 		gbl_panel.rowWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		ButtonKeyHandler buttonKeyHandler = new ButtonKeyHandler(game, guessTextPane, this);
+		ButtonKeyHandler buttonKeyHandler = new ButtonKeyHandler(game, guessTextField, clueField, this);
 		
 		keyboard = new ArrayList<JButton>();
 		
@@ -126,8 +126,8 @@ public class GameKeyboard extends JPanel {
 			keyboard.add(btnZ);
 		}
 		
-		KeyboardHandler keyboardHandler = new KeyboardHandler(game, guessTextPane);
-		this.addKeyListener(keyboardHandler);
+		//KeyboardHandler keyboardHandler = new KeyboardHandler(game, guessTextField);
+		//this.addKeyListener(keyboardHandler);
 		this.setFocusable(true);
 	}
 }

@@ -18,12 +18,14 @@ import com.katabakuwu.controller.Game;
 public class KeyboardHandler implements KeyListener {
 	private Game game;
 	private JTextField guessText;
+	private JTextField clue;
 	/**
 	 * Constructor
 	 */
-	public KeyboardHandler(Game game, JTextField guessText) {
+	public KeyboardHandler(Game game, JTextField guessText, JTextField clue) {
 		this.game = game;
 		this.guessText = guessText;
+		this.clue = clue;
 	}
 	
 	@Override
@@ -40,7 +42,7 @@ public class KeyboardHandler implements KeyListener {
 		
 		if(response) {
 			// Guess successful
-			game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText);
+			game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
 		}
 		else {
 			// Guess failed

@@ -11,6 +11,7 @@ import javax.swing.JProgressBar;
 public class Hint {
 	private JProgressBar bar;
 	private float value;
+	private float maxValue;
 	
 	/**
 	 * Constructor
@@ -18,8 +19,9 @@ public class Hint {
 	 */
 	public Hint(float value) {
 		this.value = value;
+		this.maxValue = value;
 	}
-	
+
 	/**
 	 * Set hint progress bar.
 	 * 
@@ -47,12 +49,32 @@ public class Hint {
 	}
 	
 	/**
+	 * Get maxValue.
+	 * 
+	 * @return maxValue
+	 */
+	public float getMaxValue() {
+		return maxValue;
+	}
+	
+	/**
+	 * Set maxValue
+	 * @param maxValue
+	 */
+	public void setMaxValue(float maxValue) {
+		this.maxValue = maxValue;
+	}
+	
+	/**
 	 * Reduce value
 	 * 
 	 * @param value Value
 	 */
 	public void reduceValue(float value) {
-		setValue(getValue() - value);
+		float newValue =  this.value - value;
+		if(newValue < 0.0) newValue = (float) 0.0;
+		setValue(newValue);
+		updateProgressBar();
 	}
 	
 	/**
@@ -61,8 +83,10 @@ public class Hint {
 	 * @param value Value
 	 */
 	public void increaseValue(float value) {
-		setValue(this.value + value);
-		if(this.value > 100) this.value = 100;
+		float newValue =  this.value + value;
+		if(newValue > getMaxValue()) newValue = getMaxValue();
+		setValue(newValue);
+		updateProgressBar();
 	}
 	
 	/**

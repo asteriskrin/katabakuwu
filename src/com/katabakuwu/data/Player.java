@@ -20,7 +20,7 @@ public class Player {
 	 */
 	public Player() {
 		health = new Health();
-		timer = new Timer(150);
+		timer = new Timer(120);
 		this.hint = new Hint((float)100.0);
 		this.score = new Score(0);
 		guessWord = new GuessWord();
@@ -82,7 +82,6 @@ public class Player {
 	public void useHint() {
 		if(this.isEnoughHintValue()) {
 			hint.reduceValue(((float)timer.getDuration()/timer.getMaxDuration())*75);
-			hint.updateProgressBar();
 			System.out.println("USE HINT: " + guessWord.getUnguessedLetter());
 		}
 		else {
@@ -108,9 +107,5 @@ public class Player {
 		health.increaseValue(bonus);
 		score.increaseScore(timer.getDuration());
 		timer.increaseDuration(10);
-		
-		hint.updateProgressBar();
-		health.updateProgressBar();
-		score.updateScore();
 	}
 }

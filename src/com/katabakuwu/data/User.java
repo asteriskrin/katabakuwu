@@ -1,9 +1,12 @@
 package com.katabakuwu.data;
 
+import javax.swing.JLabel;
+
 public class User {
 	private String name;
 	private int level;
 	private Player player;
+	private JLabel levelLabel;
 	
 	/**
 	 * Constructor
@@ -46,6 +49,14 @@ public class User {
 	}
 	
 	/**
+	 * Increase level
+	 * @param level New level
+	 */
+	public void increaseLevel() {
+		this.level++;
+	}
+	
+	/**
 	 * Get player
 	 * @return Player
 	 */
@@ -61,4 +72,11 @@ public class User {
 		this.player = player;
 	}
 	
+	public void setLevelLabel(JLabel label) {
+		this.levelLabel = label;
+	}
+	
+	public void updateLevel() {
+		levelLabel.setText("Lv. " + getLevel() + " " + getName());
+	}
 }
