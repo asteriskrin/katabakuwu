@@ -52,8 +52,9 @@ public class Health {
 	 * @param value Value
 	 */
 	public void reduceValue(float value) {
-		setValue(this.value - value);
-		if(this.value < 0) this.value = 0;
+		float newValue =  this.value - value;
+		if(newValue < 0.0) newValue = (float) 0.0;
+		setValue(newValue);
 		updateProgressBar();
 	}
 	
@@ -63,8 +64,9 @@ public class Health {
 	 * @param value Value
 	 */
 	public void increaseValue(float value) {
-		setValue(this.value + value);
-		if(this.value > 100) this.value = 100;
+		float newValue =  this.value + value;
+		if(newValue > 100) newValue = 100;
+		setValue(newValue);
 		updateProgressBar();
 	}
 	
