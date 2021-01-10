@@ -53,6 +53,7 @@ public class Hint {
 	 */
 	public void reduceValue(float value) {
 		setValue(getValue() - value);
+		if(this.value < 0) this.value = 0;
 		updateProgressBar();
 	}
 	

@@ -53,6 +53,7 @@ public class Health {
 	 */
 	public void reduceValue(float value) {
 		setValue(this.value - value);
+		if(this.value < 0) this.value = 0;
 		updateProgressBar();
 	}
 	
