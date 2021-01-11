@@ -13,7 +13,7 @@ import java.awt.*;
 public class FrameGame extends JPanel {
 
 	private static final long serialVersionUID = 2883848038660074213L;
-	private JPanel contentPane;
+	private PanelSky contentPane;
 	/**
 	 * Create the frame.
 	 * 
@@ -28,11 +28,9 @@ public class FrameGame extends JPanel {
 		Player player = new Player();
 		game.getUser().setPlayer(player);
 		
-		contentPane = new JPanel();
-		contentPane.setBackground(Color.decode("#87CEEB"));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//setContentPane(contentPane);
-		contentPane.setLayout(null);
+
+		contentPane = new PanelSky();
+		setContentPane(contentPane);
 		
 		JLabel profileImg = new JLabel();
 		profileImg.setLocation(10, 10);
