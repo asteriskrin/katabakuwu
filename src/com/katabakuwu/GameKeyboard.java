@@ -28,7 +28,7 @@ public class GameKeyboard extends JPanel {
 	public GameKeyboard(JPanel contentPane, Game game, JTextField guessTextField, JTextField clueField) {
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.decode("#89cc9b"));
+		panel.setOpaque(true);
 		panel.setBounds(10, 436, 450, 135);
 		contentPane.add(panel);
 		

@@ -1,6 +1,9 @@
 package com.katabakuwu.data;
 
-import javax.swing.JProgressBar;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.*;;
 
 /**
  * Hint class.
@@ -10,6 +13,7 @@ import javax.swing.JProgressBar;
  */
 public class Hint {
 	private JProgressBar bar;
+	private JButton button;
 	private float value;
 	private float maxValue;
 	
@@ -30,6 +34,16 @@ public class Hint {
 	public void setBar(JProgressBar bar) {
 		this.bar = bar;
 	}
+	
+	/**
+	 * Set hint progress bar.
+	 * 
+	 * @param bar
+	 */
+	public void setButton(JButton button) {
+		this.button = button;
+	}
+	
 	
 	/**
 	 * Get value.
@@ -94,5 +108,22 @@ public class Hint {
 	 */
 	public void updateProgressBar() {
 		bar.setValue((int) this.value);
+	}
+	
+	/**
+	 * Enable button
+	 */
+	public void enableButton() {
+		this.button.setEnabled(true);
+		this.button.setForeground(Color.WHITE);
+		this.button.setBackground(Color.MAGENTA);
+	}
+	
+	/**
+	 * Disable button
+	 */
+	public void disableButton() {
+		this.button.setEnabled(false);
+		this.button.setBackground(Color.LIGHT_GRAY);
 	}
 }

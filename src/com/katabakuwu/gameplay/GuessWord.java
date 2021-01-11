@@ -77,18 +77,7 @@ public class GuessWord {
 		}
 		return word.toString();
 	}
-	
-	/**
-	 * Build clue display on text pane.
-	 * 
-	 * @return String
-	 */
-	public String buildClue() {
-		StringBuilder clue = new StringBuilder();
-		clue.append("Petunjuk: ");
-		clue.append(displayedWord.getClue());
-		return clue.toString();
-	}
+
 	
 	/**
 	 * Update word display.
@@ -97,7 +86,7 @@ public class GuessWord {
 	 */
 	public void updateWordDisplay(JTextField word, JTextField clue) {
 		word.setText(buildWord());
-		clue.setText(buildClue());
+		clue.setText(displayedWord.getClue());
 	}
 	
 	/**
@@ -107,6 +96,7 @@ public class GuessWord {
 	 */
 	public void getNewWord(JTextField textField, JTextField clue) {
 		textField.setText("");
+		clue.setText("");
 	    for(Letter l : letters) l.setStatus(false);
 	    letters.clear();
 	    setWord();
