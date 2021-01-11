@@ -14,6 +14,6 @@ public class ClueField extends JTextField {
 		setEditable(false);
 		setText("");
 		setForeground(Color.BLACK);
-		setBackground(new Color(255, 255, 255, 50));
+		setBackground(new Color(255, 255, 255));
 	}
 }
