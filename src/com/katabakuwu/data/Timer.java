@@ -97,5 +97,10 @@ public class Timer {
 	 */
 	public void decrementValue() {
 		setDuration((this.duration > this.decrementSpeed) ? (this.duration - this.decrementSpeed) : (0));
+//		if(this.duration > this.decrementSpeed) setDuration(this.duration - this.decrementSpeed);
+//		else {
+//			setDuration(0);
+//			JOptionPane.showMessageDialog(null, "Permainan selesai");
+//		}
 	}
 }

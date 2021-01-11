@@ -1,5 +1,7 @@
 package com.katabakuwu.controller;
 
+import javax.swing.JOptionPane;
+
 import com.katabakuwu.data.User;
 import com.katabakuwu.server.WordDatabase;
 
@@ -32,5 +34,16 @@ public class Game {
 	 */
 	public WordDatabase getWordDatabase() {
 		return wordDatabase;
+	}
+	
+	/*
+	 * End game.
+	 */
+	public boolean endGame() {
+		if(user.getPlayer().getHealth().getValue()<=0 || user.getPlayer().getTimer().getDuration()<=0) {
+			JOptionPane.showMessageDialog(null, "Permainan selesai");
+			return true;
+		}
+		return false;
 	}
 }
