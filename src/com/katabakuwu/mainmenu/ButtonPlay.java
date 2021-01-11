@@ -35,7 +35,6 @@ public class ButtonPlay extends JButton implements ActionListener {
 			game.mf.getContentPane().removeAll();
 			game.mf.setContentPane(frame);
 			game.mf.revalidate();
-			System.out.println("Tadaa");
 			game.getWordDatabase().clearStatus();
 		} catch(Exception e2) {
 			e2.printStackTrace();
