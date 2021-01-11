@@ -1,5 +1,6 @@
 package com.katabakuwu.data;
 
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
 /**
@@ -53,7 +54,7 @@ public class Health {
 	 */
 	public void reduceValue(float value) {
 		float newValue =  this.value - value;
-		if(newValue < 0.0) newValue = (float) 0.0;
+		if(newValue <= 0.0) newValue = (float) 0.0;
 		setValue(newValue);
 		updateProgressBar();
 	}

@@ -32,10 +32,12 @@ public class ButtonPlay extends JButton implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		try {
 			FrameGame frame = new FrameGame(this.game);
-			frame.setVisible(true);
+			game.mf.getContentPane().removeAll();
+			game.mf.setContentPane(frame);
+			game.mf.revalidate();
 			game.getWordDatabase().clearStatus();
 		} catch(Exception e2) {
-			// do something here
+			e2.printStackTrace();
 		}
 		
 	}

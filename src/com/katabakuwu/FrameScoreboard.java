@@ -18,28 +18,24 @@ import java.awt.*;
  * @author Farhan Arifandi
  * @author Ryan Garnet Andrianto
  */
-public class FrameScoreboard extends JFrame {
+public class FrameScoreboard extends JPanel {
 
 	private static final long serialVersionUID = 2883848038660074213L;
 	private JPanel contentPane;
 
 	public FrameScoreboard(User user) {
-		super("Katabakuwu");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 480, 640);
 		
-		contentPane = new JPanel();
-		contentPane.setBackground(Color.decode("#87CEEB"));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setBackground(Color.decode("#87CEEB"));
+		setBounds(new Rectangle(0,0,480,640));
+		setBorder(new EmptyBorder(5, 5, 5, 5));
+		setLayout(null);
+		setVisible(true);
 		
 		JLabel profileImg = new JLabel();
 		profileImg.setLocation(10, 10);
 		profileImg.setSize(50, 50);
 		profileImg.setIcon(new ImageIcon(new ImageIcon("assets/profileimg-placeholder.jpg").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
-		contentPane.add(profileImg);
+		add(profileImg);
 		
 		String tempString = "Lv. " + user.getLevel() + " " + user.getName();
 		
@@ -47,7 +43,7 @@ public class FrameScoreboard extends JFrame {
 		playerName.setHorizontalAlignment(SwingConstants.LEFT);
 		playerName.setFont(new Font("Arial", Font.BOLD, 18));
 		playerName.setBounds(70, 23, 205, 24);
-		contentPane.add(playerName);
+		add(playerName);
 		
 		JTextField titlePane = new JTextField();
 		titlePane.setEditable(false);
@@ -56,7 +52,7 @@ public class FrameScoreboard extends JFrame {
 		titlePane.setText("SCOREBOARD");
 		titlePane.setBackground(new Color(255, 0, 255, 50));
 		titlePane.setBounds(10, 70, 446, 39);
-		contentPane.add(titlePane);
+		add(titlePane);
 		
 		// Create Scoreboard List instance
 		ScoreboardList sl = new ScoreboardList();
@@ -68,7 +64,14 @@ public class FrameScoreboard extends JFrame {
 		list.setVisibleRowCount(20);
 		list.setBackground(new Color(192, 192, 192, 100));
 		list.setBounds(10, 119, 446, 399);
-		contentPane.add(list);
+		add(list);
+		
+		for (int i = 0; i < list.getModel().getSize(); i++) {
+            String item = list.getModel().getElementAt(i);
+            System.out.println("test1");
+            System.out.println(item);
+            System.out.println("test2");
+        }
 		
 		// Create Thread Scoreboard instance
 		ThreadScoreboard ts = new ThreadScoreboard(list, sl);
@@ -76,13 +79,13 @@ public class FrameScoreboard extends JFrame {
 		ts.start();
 		
 		ButtonCloseScoreboard closeBtn = new ButtonCloseScoreboard(this, "Close", 10, 528, 446, 50);
-		contentPane.add(closeBtn);
+		add(closeBtn);
 		
 		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);
-		contentPane.add(cloud1);
+		add(cloud1);
 		
 		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
-		contentPane.add(cloud2);
+		add(cloud2);
 		
 	}
 }
