@@ -16,7 +16,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FrameMainMenu frame = new FrameMainMenu(game);
+					MainFrame frame = new MainFrame(game);
 					frame.setVisible(true);
 					
 					String name = JOptionPane.showInputDialog("Masukkan nama: ");

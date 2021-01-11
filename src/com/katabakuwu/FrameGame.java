@@ -10,7 +10,7 @@ import com.katabakuwu.mainmenu.Cloud;
 
 import java.awt.*;
 
-public class FrameGame extends JFrame {
+public class FrameGame extends JPanel {
 
 	private static final long serialVersionUID = 2883848038660074213L;
 	private JPanel contentPane;
@@ -19,9 +19,9 @@ public class FrameGame extends JFrame {
 	 * 
 	 */
 	public FrameGame(Game game) {
-		super("Katabakuwu");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//super();
+		//setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 640);
 		
 		// Create Player class instance
@@ -31,7 +31,7 @@ public class FrameGame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.decode("#87CEEB"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		//setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel profileImg = new JLabel();
@@ -94,6 +94,6 @@ public class FrameGame extends JFrame {
 		
 		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
 		contentPane.add(cloud2);
-		
+
 	}
 }

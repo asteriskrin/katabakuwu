@@ -17,7 +17,7 @@ import java.awt.*;
  * @author Farhan Arifandi
  * @author Ryan Garnet Andrianto
  */
-public class FrameMainMenu extends JFrame {
+public class FrameMainMenu extends JPanel {
 
 	private static final long serialVersionUID = 2883848038660074213L;
 	private JPanel contentPane;
@@ -26,16 +26,13 @@ public class FrameMainMenu extends JFrame {
 	 * 
 	 */
 	public FrameMainMenu(Game game) {
-		super("Katabakuwu");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 480, 640);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.decode("#87CEEB"));
+		contentPane.setBounds(new Rectangle(0,0,480,640));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		contentPane.setVisible(true);
 		
 		JLabel picLabel = new JLabel();
 		picLabel.setLocation(165, 100);
