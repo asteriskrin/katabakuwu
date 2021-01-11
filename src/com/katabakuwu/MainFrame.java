@@ -4,12 +4,14 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import com.katabakuwu.controller.Game;
 
 public class MainFrame extends JFrame{
+
 	public MainFrame(Game game) {
-		
+		game.setMainFrame(this);
 		this.setTitle("Katabakuwu");
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

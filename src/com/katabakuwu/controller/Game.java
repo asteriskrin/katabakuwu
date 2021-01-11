@@ -2,6 +2,7 @@ package com.katabakuwu.controller;
 
 import javax.swing.JOptionPane;
 
+import com.katabakuwu.MainFrame;
 import com.katabakuwu.data.User;
 import com.katabakuwu.server.WordDatabase;
 
@@ -11,6 +12,7 @@ import com.katabakuwu.server.WordDatabase;
  * @author Ryan Garnet Andrianto
  */
 public class Game {
+	public MainFrame mf;
 	private WordDatabase wordDatabase;
 	private int state = 0;
 	private User user;
@@ -45,5 +47,9 @@ public class Game {
 			return true;
 		}
 		return false;
+	}
+	
+	public void setMainFrame(MainFrame mf) {
+		this.mf = mf;
 	}
 }
