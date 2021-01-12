@@ -39,19 +39,25 @@ public class ButtonKeyHandler implements ActionListener {
 		
 		if(response) {
 			// Guess successful
+			game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
 			
+			source.setEnabled(false);
 			if(game.getUser().getPlayer().getGuessWord().isWordGuessed() && game.getUser().getPlayer().getTimer().getDuration()>0) {
 				Thread thread = new Thread() {
 					public void run() {
 						SoundJLayer sound = new SoundJLayer("assets/sounds/word_finish.mp3");
 						sound.play();
 						
-						for(JButton j : gameKeyboard.keyboard) j.setEnabled(true);
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							System.out.println("Error A01");
+						}
 						
-						game.getUser().getPlayer().getBonus();
+						for(JButton j : gameKeyboard.keyboard) j.setEnabled(true);
 						game.getUser().getPlayer().getGuessWord().getNewWord(guessText, clue);
 						game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
-						
+						game.getUser().getPlayer().getBonus();
 						game.getUser().increaseLevel();
 						game.getUser().updateLevel();
 					}
@@ -63,10 +69,6 @@ public class ButtonKeyHandler implements ActionListener {
 					public void run() {
 						SoundJLayer sound = new SoundJLayer("assets/sounds/guess_correct.mp3");
 						sound.play();
-						
-						game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
-						
-						source.setEnabled(false);
 					}
 				};
 				thread.start();
