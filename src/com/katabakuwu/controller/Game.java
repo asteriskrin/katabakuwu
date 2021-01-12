@@ -1,9 +1,16 @@
 package com.katabakuwu.controller;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import javax.swing.JOptionPane;
 
+import com.katabakuwu.FrameMainMenu;
 import com.katabakuwu.MainFrame;
 import com.katabakuwu.data.User;
+import com.katabakuwu.framework.ScoreboardControl;
 import com.katabakuwu.server.WordDatabase;
 
 /**
@@ -11,7 +18,7 @@ import com.katabakuwu.server.WordDatabase;
  * 
  * @author Ryan Garnet Andrianto
  */
-public class Game {
+public class Game implements ScoreboardControl {
 	public MainFrame mf;
 	private WordDatabase wordDatabase;
 	private int state = 0;
@@ -19,7 +26,7 @@ public class Game {
 	
 	public Game() {
 		wordDatabase = new WordDatabase();
-		user = new User("PlayerName", 1);
+		user = new User(this, "PlayerName", 1);
 	}
 	
 	/**
@@ -41,15 +48,34 @@ public class Game {
 	/*
 	 * End game.
 	 */
-	public boolean endGame() {
-		if(user.getPlayer().getHealth().getValue()<=0 || user.getPlayer().getTimer().getDuration()<=0) {
+	public void endGame() {
+		if(user.getPlayer(this).getHealth().getValue()<=0 || user.getPlayer(this).getTimer().getDuration()<=0) {
 			JOptionPane.showMessageDialog(null, "Permainan selesai");
-			return true;
+			try {
+				sendScore(user.getName(), user.getPlayer(this).getScore().getScore());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			mf.getContentPane().removeAll();
+			mf.setContentPane(new FrameMainMenu(this));
+			mf.revalidate();
 		}
-		return false;
 	}
 	
 	public void setMainFrame(MainFrame mf) {
 		this.mf = mf;
+	}
+
+	@Override
+	public void sendScore(String name, int score) throws IOException {
+		URL url = new URL("http://katabakuwu.asteriskrin.my.id/postScore.php?key=1234&name=" + name + "&score=" + score);
+		System.out.println(url);
+		HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+		httpCon.setDoOutput(true);
+		httpCon.setRequestMethod("GET");
+		OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
+		System.out.println(httpCon.getResponseCode());
+		System.out.println(httpCon.getResponseMessage());
+		out.close();
 	}
 }
