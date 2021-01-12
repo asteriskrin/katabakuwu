@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import com.katabakuwu.GameKeyboard;
 import com.katabakuwu.controller.Game;
+import com.katabakuwu.framework.SoundJLayer;
 import com.katabakuwu.data.Player;
 
 /**
@@ -43,28 +44,56 @@ public class ButtonKeyHandler implements ActionListener {
 			
 			source.setEnabled(false);
 			if(game.getUser().getPlayer().getGuessWord().isWordGuessed() && game.getUser().getPlayer().getTimer().getDuration()>0) {
-				
-				for(JButton j : gameKeyboard.keyboard) j.setEnabled(true);
-				
-				game.getUser().getPlayer().getBonus();
-				game.getUser().getPlayer().getGuessWord().getNewWord(guessText, clue);
-				game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
-				
-				game.getUser().increaseLevel();
-				game.getUser().updateLevel();
+				Thread thread = new Thread() {
+					public void run() {
+						SoundJLayer sound = new SoundJLayer("assets/sounds/word_finish.mp3");
+						sound.play();
+						
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							System.out.println("Error A01");
+						}
+						
+						for(JButton j : gameKeyboard.keyboard) j.setEnabled(true);
+						game.getUser().getPlayer().getGuessWord().getNewWord(guessText, clue);
+						game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
+						game.getUser().getPlayer().getBonus();
+						game.getUser().increaseLevel();
+						game.getUser().updateLevel();
+					}
+				};
+				thread.start();
+			}
+			else {
+				Thread thread = new Thread() {
+					public void run() {
+						SoundJLayer sound = new SoundJLayer("assets/sounds/guess_correct.mp3");
+						sound.play();
+					}
+				};
+				thread.start();
 			}
 		}
 		
 		else {
 			// Guess failed
-			System.out.println("Guess Failed");
+			Thread thread = new Thread() {
+				public void run() {
+					SoundJLayer sound = new SoundJLayer("assets/sounds/guess_wrong.mp3");
+					sound.play();
+					
 
-			source.setEnabled(false);
-			Player p = game.getUser().getPlayer();
-			p.getDamage();
-			if(p.getHealth().getValue() <= 0) {
-				game.endGame();
-			}
+					source.setEnabled(false);
+					Player p = game.getUser().getPlayer();
+					p.getDamage();
+					if(p.getHealth().getValue() <= 0) {
+						game.endGame();
+					}
+				}
+			};
+			thread.start();
+
 		}
 		
 	}
