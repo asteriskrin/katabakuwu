@@ -5,6 +5,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 
 import com.katabakuwu.FrameGame;
@@ -14,6 +16,7 @@ import com.katabakuwu.MainFrame;
 import com.katabakuwu.data.Player;
 import com.katabakuwu.data.User;
 import com.katabakuwu.framework.ScoreboardControl;
+import com.katabakuwu.framework.WAVController;
 import com.katabakuwu.server.WordDatabase;
 
 /**
@@ -26,6 +29,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	public MainFrame mf;
 	private WordDatabase wordDatabase;
 	private User user;
+	private WAVController bgm;
 	
 	public Game() {
 		wordDatabase = new WordDatabase();
@@ -111,9 +115,34 @@ public class Game implements ScoreboardControl, ScreenController {
 			mf.getContentPane().removeAll();
 			mf.setContentPane(panel);
 			mf.revalidate();
+			
+			playBGM("./assets/sounds/main_theme.wav");
 		} catch (Exception e2) {
 			System.out.println("Error while trying to show main menu panel.");
 		}
+	}
+
+	/**
+	 * Play BGM..
+	 * 
+	 * @param string File path
+	 */
+	private void playBGM(String filePath) {
+		Thread thread = new Thread() {
+			public void run() {
+				
+				try {
+					if(bgm != null) {
+						bgm.pause();
+					}
+					bgm = new WAVController(filePath);
+					bgm.play();
+				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+					System.out.println("Error while playing music " + filePath);
+				}
+			}
+		};
+		thread.start();
 	}
 
 	/**
