@@ -12,6 +12,8 @@ import com.katabakuwu.data.*;
  * @author Ryan Garnet Andrianto
  */
 public class HealthBar extends JProgressBar {
+
+	private static final long serialVersionUID = 1L;
 	private int value;
 	private int x, y, width, height;
 	

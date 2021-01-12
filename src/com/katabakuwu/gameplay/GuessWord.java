@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
-
 import com.katabakuwu.server.WordDatabase;
 
 /**

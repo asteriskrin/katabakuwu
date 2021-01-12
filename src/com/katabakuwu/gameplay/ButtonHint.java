@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import com.katabakuwu.controller.Game;
-import com.katabakuwu.data.Hint;
 
 
 /**

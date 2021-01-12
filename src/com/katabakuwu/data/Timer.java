@@ -2,6 +2,8 @@ package com.katabakuwu.data;
 
 import javax.swing.JProgressBar;
 
+import com.katabakuwu.controller.Game;
+
 /**
  * Timer class.
  * @author Ryan Garnet Andrianto
@@ -11,6 +13,8 @@ public class Timer {
 	private int duration;
 	private int maxDuration;
 	private JProgressBar bar;
+	private Player player;
+	private boolean isTimerRunning = false;
 	
 	/**
 	 * By default, the decrement speed is 1/second
@@ -19,12 +23,14 @@ public class Timer {
 
 	/**
 	 * Constructor
+	 * @param game 
 	 * 
 	 * @param duration
 	 */
-	public Timer(int duration) {
+	public Timer(Player player, int duration) {
 		this.duration = duration;
 		this.maxDuration = duration;
+		this.player = player;
 	}
 	
 	/**
@@ -87,6 +93,8 @@ public class Timer {
 	 * Update progress bar
 	 */
 	public void updateProgressBar() {
+		if(bar == null)
+			return;
 		int barValue = (this.duration)*(100)/(this.maxDuration);
 		if(barValue > 100) barValue = 100;
 		bar.setValue(barValue);
@@ -97,10 +105,48 @@ public class Timer {
 	 */
 	public void decrementValue() {
 		setDuration((this.duration > this.decrementSpeed) ? (this.duration - this.decrementSpeed) : (0));
-//		if(this.duration > this.decrementSpeed) setDuration(this.duration - this.decrementSpeed);
-//		else {
-//			setDuration(0);
-//			JOptionPane.showMessageDialog(null, "Permainan selesai");
-//		}
+	}
+	
+	/**
+	 * Start timer.
+	 */
+	public void startTimer() {
+		isTimerRunning = true;
+		Thread thread = new Thread() {
+			public void run() {
+				while(true) {
+					if(!isTimerRunning)
+						break;
+					
+					decrementValue();
+					updateProgressBar();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						System.out.println("Error while decrementing timer value.");
+					}
+					
+					if(duration <= 0) {
+						endGame();
+						stopTimer();
+					}
+				}
+			}
+		};
+		thread.start();
+	}
+	
+	/**
+	 * End game.
+	 */
+	protected void endGame() {
+		player.endGame();
+	}
+
+	/**
+	 * Stop timer.
+	 */
+	public void stopTimer() {
+		isTimerRunning = false;
 	}
 }

@@ -1,6 +1,5 @@
 package com.katabakuwu;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -14,8 +13,6 @@ import javax.swing.UIManager;
 
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.gameplay.ButtonKeyHandler;
-import com.katabakuwu.gameplay.KeyboardHandler;
-import com.katabakuwu.gameplay.Word;
 
 public class GameKeyboard extends JPanel {
 	
