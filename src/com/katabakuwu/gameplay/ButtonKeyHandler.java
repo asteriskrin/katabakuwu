@@ -75,11 +75,19 @@ public class ButtonKeyHandler implements ActionListener {
 		
 		else {
 			// Guess failed
-			System.out.println("Guess Failed");
+			Thread thread = new Thread() {
+				public void run() {
+					SoundJLayer sound = new SoundJLayer("assets/sounds/guess_wrong.mp3");
+					sound.play();
+					
 
-			source.setEnabled(false);
-			game.getUser().getPlayer().getGuessDamage();
-			game.getUser().getPlayer().getHealth().updateProgressBar();
+					source.setEnabled(false);
+					game.getUser().getPlayer().getGuessDamage();
+					game.getUser().getPlayer().getHealth().updateProgressBar();
+				}
+			};
+			thread.start();
+
 		}
 		
 	}
