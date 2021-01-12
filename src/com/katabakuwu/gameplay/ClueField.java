@@ -15,5 +15,6 @@ public class ClueField extends JTextField {
 		setText("");
 		setForeground(Color.BLACK);
 		setBackground(new Color(255, 255, 255));
+		setOpaque(false);
 	}
 }

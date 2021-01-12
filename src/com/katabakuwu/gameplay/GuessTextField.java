@@ -14,6 +14,7 @@ public class GuessTextField extends JTextField{
 		setFont(new Font("Arial", Font.PLAIN, 24));
 		setEditable(false);
 		
+		setOpaque(false);
 		setText("");
 		setForeground(Color.BLACK);
 		setBackground(new Color(255, 160, 255));
