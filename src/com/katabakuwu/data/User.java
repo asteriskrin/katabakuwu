@@ -9,15 +9,12 @@ public class User {
 	private int level;
 	private Player player;
 	private JLabel levelLabel;
-	private Game game;
-	
 	/**
 	 * Constructor
 	 */
 	public User(Game game, String name, int level) {
 		this.name = name;
 		this.level = level;
-		this.game = game;
 	}
 
 	/**

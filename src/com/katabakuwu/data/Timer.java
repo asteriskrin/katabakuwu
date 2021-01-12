@@ -14,6 +14,7 @@ public class Timer {
 	private int maxDuration;
 	private JProgressBar bar;
 	private Game game;
+	private boolean isTimerRunning = false;
 	
 	/**
 	 * By default, the decrement speed is 1/second
@@ -95,8 +96,6 @@ public class Timer {
 		int barValue = (this.duration)*(100)/(this.maxDuration);
 		if(barValue > 100) barValue = 100;
 		bar.setValue(barValue);
-
-		game.endGame();
 	}
 	
 	/**
@@ -104,9 +103,41 @@ public class Timer {
 	 */
 	public void decrementValue() {
 		setDuration((this.duration > this.decrementSpeed) ? (this.duration - this.decrementSpeed) : (0));
-//		if(this.duration > this.decrementSpeed) setDuration(this.duration - this.decrementSpeed);
-//		else {
-//			setDuration(0);
-//		}
+	}
+	
+	/**
+	 * Start timer.
+	 */
+	public void startTimer() {
+		isTimerRunning = true;
+		Thread thread = new Thread() {
+			public void run() {
+				while(true) {
+					if(!isTimerRunning)
+						break;
+					
+					decrementValue();
+					updateProgressBar();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						System.out.println("Error while decrementing timer value.");
+					}
+					
+					if(duration <= 0) {
+						game.endGame();
+						stopTimer();
+					}
+				}
+			}
+		};
+		thread.start();
+	}
+	
+	/**
+	 * Stop timer.
+	 */
+	public void stopTimer() {
+		isTimerRunning = false;
 	}
 }

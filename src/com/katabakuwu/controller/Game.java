@@ -7,8 +7,11 @@ import java.net.URL;
 
 import javax.swing.JOptionPane;
 
+import com.katabakuwu.FrameGame;
 import com.katabakuwu.FrameMainMenu;
+import com.katabakuwu.FrameScoreboard;
 import com.katabakuwu.MainFrame;
+import com.katabakuwu.data.Player;
 import com.katabakuwu.data.User;
 import com.katabakuwu.framework.ScoreboardControl;
 import com.katabakuwu.server.WordDatabase;
@@ -17,11 +20,11 @@ import com.katabakuwu.server.WordDatabase;
  * Game class.
  * 
  * @author Ryan Garnet Andrianto
+ * @author Farhan Arifandi
  */
-public class Game implements ScoreboardControl {
+public class Game implements ScoreboardControl, ScreenController {
 	public MainFrame mf;
 	private WordDatabase wordDatabase;
-	private int state = 0;
 	private User user;
 	
 	public Game() {
@@ -49,19 +52,21 @@ public class Game implements ScoreboardControl {
 	 * End game.
 	 */
 	public void endGame() {
-		if(user.getPlayer().getHealth().getValue()<=0 || user.getPlayer().getTimer().getDuration()<=0) {
-			JOptionPane.showMessageDialog(null, "Permainan selesai");
-			try {
-				sendScore(user.getName(), user.getPlayer().getScore().getScore());
-			} catch (IOException e) {
-				e.printStackTrace();
+		JOptionPane.showMessageDialog(null, "Permainan selesai, skormu sedang dikirimkan...\r\nHarap tunggu...");
+
+		Thread thread = new Thread() {
+			public void run() {
+				try {
+					sendScore(user.getName(), user.getPlayer().getScore().getScore());
+				} catch (IOException e) {
+					System.out.println("Error while trying to send player score to server.");
+				}
+				JOptionPane.showMessageDialog(null, "Skor telah berhasil dikirimkan...");
+				
+				showScoreboard();
 			}
-			user.getPlayer().getHealth().setValue((Float)null);
-			user.getPlayer().getTimer().setDuration((Integer) null);
-			mf.getContentPane().removeAll();
-			mf.setContentPane(new FrameMainMenu(this));
-			mf.revalidate();
-		}
+		};
+		thread.start();
 	}
 	
 	public void setMainFrame(MainFrame mf) {
@@ -79,5 +84,57 @@ public class Game implements ScoreboardControl {
 		System.out.println(httpCon.getResponseCode());
 		System.out.println(httpCon.getResponseMessage());
 		out.close();
+	}
+
+	/**
+	 * Show scoreboard panel.
+	 */
+	@Override
+	public void showScoreboard() {
+		try {
+			FrameScoreboard panel = new FrameScoreboard(this);
+			mf.getContentPane().removeAll();
+			mf.setContentPane(panel);
+			mf.revalidate();
+		} catch (Exception e2) {
+			System.out.println("Error while trying to show scoreboard panel.");
+		}
+	}
+	
+	/**
+	 * Show main menu panel.
+	 */
+	@Override
+	public void showMainMenu() {
+		try {
+			FrameMainMenu panel = new FrameMainMenu(this);
+			mf.getContentPane().removeAll();
+			mf.setContentPane(panel);
+			mf.revalidate();
+		} catch (Exception e2) {
+			System.out.println("Error while trying to show main menu panel.");
+		}
+	}
+
+	/**
+	 * Start game.
+	 */
+	public void startGame() {
+		Player player = new Player(this);
+		getUser().setPlayer(player);
+		
+		getWordDatabase().clearStatus();
+		showGameplayPanel();
+	}
+
+	/**
+	 * Show gameplay panel.
+	 */
+	@Override
+	public void showGameplayPanel() {
+		FrameGame panel = new FrameGame(this);
+		mf.getContentPane().removeAll();
+		mf.setContentPane(panel);
+		mf.revalidate();
 	}
 }

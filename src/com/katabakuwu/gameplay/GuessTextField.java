@@ -7,6 +7,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class GuessTextField extends JTextField{
+
+	private static final long serialVersionUID = 1L;
+
 	public GuessTextField(int x, int y, int width, int height) {
 		
 		setBounds(x, y, width, height);

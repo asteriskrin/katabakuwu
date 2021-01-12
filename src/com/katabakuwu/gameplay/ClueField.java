@@ -6,6 +6,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class ClueField extends JTextField {
+
+	private static final long serialVersionUID = 1L;
+
 	public ClueField(int x, int y, int width, int height) {
 
 		setBounds(x, y, width, height);

@@ -4,12 +4,13 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import com.katabakuwu.mainmenu.BGM_MainMenu;
-import com.katabakuwu.mainmenu.ButtonPlay;
 import com.katabakuwu.mainmenu.ButtonScoreboard;
 import com.katabakuwu.mainmenu.Cloud;
 import com.katabakuwu.controller.Game;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * FrameMainMenu class.
@@ -43,7 +44,19 @@ public class FrameMainMenu extends JPanel {
 		lblNewLabel.setBounds(10, 35, 456, 36);
 		add(lblNewLabel);
 		
-		JButton btnStartGame = new ButtonPlay(game, "Start Game", 10, 306, 446, 60);
+		/**
+		 * Start game button.
+		 */
+		JButton btnStartGame = new JButton("Start Game");
+		btnStartGame.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnStartGame.setBounds(10, 306, 446, 60);
+		btnStartGame.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.startGame();
+			}
+		});
 		add(btnStartGame);
 		
 		JButton btnScoreboard = new ButtonScoreboard(game, "Scoreboard", 10, 386, 446, 60);

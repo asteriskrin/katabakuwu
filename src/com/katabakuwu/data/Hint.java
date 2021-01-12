@@ -1,8 +1,6 @@
 package com.katabakuwu.data;
 
 import java.awt.Color;
-import java.awt.Font;
-
 import javax.swing.*;;
 
 /**

@@ -4,13 +4,14 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import com.katabakuwu.mainmenu.Cloud;
-import com.katabakuwu.scoreboard.ButtonCloseScoreboard;
 import com.katabakuwu.scoreboard.ScoreboardList;
 import com.katabakuwu.scoreboard.ThreadScoreboard;
 import com.katabakuwu.controller.*;
 import com.katabakuwu.data.User;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * FrameScoreboard class.
@@ -20,11 +21,9 @@ import java.awt.*;
  */
 public class FrameScoreboard extends JPanel {
 
-	private static final long serialVersionUID = 2883848038660074213L;
-	private JPanel contentPane;
+	private static final long serialVersionUID = 1L;
 
-	public FrameScoreboard(User user) {
-		
+	public FrameScoreboard(Game game) {
 		setBackground(Color.decode("#87CEEB"));
 		setBounds(new Rectangle(0,0,480,640));
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -37,6 +36,7 @@ public class FrameScoreboard extends JPanel {
 		profileImg.setIcon(new ImageIcon(new ImageIcon("assets/profileimg-placeholder.jpg").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
 		add(profileImg);
 		
+		User user = game.getUser();
 		String tempString = "Lv. " + user.getLevel() + " " + user.getName();
 		
 		JLabel playerName = new JLabel(tempString);
@@ -77,8 +77,23 @@ public class FrameScoreboard extends JPanel {
 		ThreadScoreboard ts = new ThreadScoreboard(list, sl);
 		// Start the thread
 		ts.start();
-		
-		ButtonCloseScoreboard closeBtn = new ButtonCloseScoreboard(this, "Close", 10, 528, 446, 50);
+
+		/**
+		 * Close button.
+		 */
+		JButton closeBtn = new JButton("Close");
+		closeBtn.setForeground(Color.WHITE);
+		closeBtn.setBackground(Color.MAGENTA);
+		closeBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		closeBtn.setBounds(10, 528, 446, 50);
+		closeBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Show main menu
+				game.showMainMenu();
+			}
+		});
 		add(closeBtn);
 		
 		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);

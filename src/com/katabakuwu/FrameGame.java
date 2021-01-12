@@ -10,24 +10,19 @@ import com.katabakuwu.mainmenu.Cloud;
 
 import java.awt.*;
 
+/**
+ * Gameplay panel.
+ */
 public class FrameGame extends JPanel {
 
-	private static final long serialVersionUID = 2883848038660074213L;
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the frame.
-	 * 
-	 */
 	public FrameGame(Game game) {
 		setBackground(Color.decode("#87CEEB"));
 		setBounds(new Rectangle(0,0,480,640));
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(null);
 		setVisible(true);
-		
-		// Create Player class instance
-		Player player = new Player(game);
-		game.getUser().setPlayer(player);
 		
 		JLabel profileImg = new JLabel();
 		profileImg.setLocation(10, 10);
@@ -43,6 +38,8 @@ public class FrameGame extends JPanel {
 		playerName.setFont(new Font("Arial", Font.BOLD, 18));
 		playerName.setBounds(92, 10, 205, 23);
 		add(playerName);
+		
+		Player player = game.getUser().getPlayer();
 		
 		game.getUser().setLevelLabel(playerName);
 		game.getUser().updateLevel();
