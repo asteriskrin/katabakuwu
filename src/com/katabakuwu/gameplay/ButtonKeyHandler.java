@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import com.katabakuwu.GameKeyboard;
 import com.katabakuwu.controller.Game;
+import com.katabakuwu.framework.SoundJLayer;
 
 /**
  * Button Key Handler.
@@ -38,19 +39,37 @@ public class ButtonKeyHandler implements ActionListener {
 		
 		if(response) {
 			// Guess successful
-			game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
 			
-			source.setEnabled(false);
 			if(game.getUser().getPlayer().getGuessWord().isWordGuessed() && game.getUser().getPlayer().getTimer().getDuration()>0) {
-				
-				for(JButton j : gameKeyboard.keyboard) j.setEnabled(true);
-				
-				game.getUser().getPlayer().getBonus();
-				game.getUser().getPlayer().getGuessWord().getNewWord(guessText, clue);
-				game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
-				
-				game.getUser().increaseLevel();
-				game.getUser().updateLevel();
+				Thread thread = new Thread() {
+					public void run() {
+						SoundJLayer sound = new SoundJLayer("assets/sounds/word_finish.mp3");
+						sound.play();
+						
+						for(JButton j : gameKeyboard.keyboard) j.setEnabled(true);
+						
+						game.getUser().getPlayer().getBonus();
+						game.getUser().getPlayer().getGuessWord().getNewWord(guessText, clue);
+						game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
+						
+						game.getUser().increaseLevel();
+						game.getUser().updateLevel();
+					}
+				};
+				thread.start();
+			}
+			else {
+				Thread thread = new Thread() {
+					public void run() {
+						SoundJLayer sound = new SoundJLayer("assets/sounds/guess_correct.mp3");
+						sound.play();
+						
+						game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
+						
+						source.setEnabled(false);
+					}
+				};
+				thread.start();
 			}
 		}
 		
