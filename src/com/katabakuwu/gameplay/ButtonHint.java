@@ -42,13 +42,8 @@ public class ButtonHint extends JButton implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(game.getUser().getPlayer().isEnoughHintValue()) {
-			game.getUser().getPlayer().useHint();
-		}
-		else {
-			this.setBackground(Color.LIGHT_GRAY);
-			this.setEnabled(false);
-		}
+		game.getUser().getPlayer().useHint();
+		game.getUser().getPlayer().checkButton();
 	}
 	
 }

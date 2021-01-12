@@ -10,10 +10,10 @@ public class ClueField extends JTextField {
 
 		setBounds(x, y, width, height);
 		setHorizontalAlignment(SwingConstants.CENTER);
-		setFont(new Font("Arial", Font.PLAIN, 20));
+		setFont(new Font("Arial", Font.PLAIN, 16));
 		setEditable(false);
 		setText("");
 		setForeground(Color.BLACK);
-		setBackground(new Color(255, 255, 255, 50));
+		setBackground(new Color(255, 255, 255));
 	}
 }

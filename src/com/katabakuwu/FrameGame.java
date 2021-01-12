@@ -73,11 +73,14 @@ public class FrameGame extends JPanel {
 		
 		ButtonHint hintBtn = new ButtonHint(game, 10, 292, 60, 60);
 		add(hintBtn);
+		player.getHint().setButton(hintBtn);
 		
 		GuessTextField guessTextField = new GuessTextField(10, 362, 446, 50);
+		guessTextField.setBounds(10, 362, 446, 50);
 		add(guessTextField);
 		
-		ClueField clueField = new ClueField(10, 170, 446, 50);
+		ClueField clueField = new ClueField(196, 333, 260, 30);
+		clueField.setBounds(290, 333, 166, 30);
 		add(clueField);
 		
 		game.getUser().getPlayer().getGuessWord().setWord();

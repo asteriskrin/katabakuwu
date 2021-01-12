@@ -85,8 +85,17 @@ public class Player {
 			System.out.println("USE HINT: " + guessWord.getUnguessedLetter());
 		}
 		else {
+			hint.disableButton();
 			System.out.println("Insufficient hint point.");
 		}
+	}
+	
+	/**
+	 * Check button status
+	 */
+	public void checkButton() {
+		if(this.isEnoughHintValue()) hint.enableButton();
+		else hint.disableButton();
 	}
 	
 	/*
@@ -107,5 +116,7 @@ public class Player {
 		health.increaseValue(bonus);
 		score.increaseScore(timer.getDuration());
 		timer.increaseDuration(10);
+		
+		this.checkButton();
 	}
 }
