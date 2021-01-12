@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import com.katabakuwu.GameKeyboard;
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.framework.SoundJLayer;
+import com.katabakuwu.data.Player;
 
 /**
  * Button Key Handler.
@@ -84,8 +85,11 @@ public class ButtonKeyHandler implements ActionListener {
 					
 
 					source.setEnabled(false);
-					game.getUser().getPlayer().getGuessDamage();
-					game.getUser().getPlayer().getHealth().updateProgressBar();
+					Player p = game.getUser().getPlayer();
+					p.getDamage();
+					if(p.getHealth().getValue() <= 0) {
+						game.endGame();
+					}
 				}
 			};
 			thread.start();

@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import com.katabakuwu.FrameGame;
-import com.katabakuwu.FrameScoreboard;
 import com.katabakuwu.controller.Game;
 
 /**
@@ -47,14 +45,7 @@ public class ButtonScoreboard extends JButton implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		try {
-			FrameScoreboard frame = new FrameScoreboard(this.game.getUser());
-			game.mf.getContentPane().removeAll();
-			game.mf.setContentPane(frame);
-			game.mf.revalidate();
-		} catch (Exception e2) {
-			
-		}
+		game.showScoreboard();
 	}
 	
 }

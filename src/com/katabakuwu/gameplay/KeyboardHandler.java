@@ -3,7 +3,6 @@ package com.katabakuwu.gameplay;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import com.katabakuwu.controller.Game;

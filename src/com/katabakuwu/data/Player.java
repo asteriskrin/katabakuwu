@@ -14,13 +14,15 @@ public class Player {
 	private Hint hint;
 	private Score score;
 	private GuessWord guessWord;
-	
+	private User user;
 	/**
 	 * Constructor
 	 */
-	public Player() {
+	public Player(User user) {
+		this.user = user;
+		
 		health = new Health();
-		timer = new Timer(120);
+		timer = new Timer(this, 120);
 		this.hint = new Hint((float)100.0);
 		this.score = new Score(0);
 		guessWord = new GuessWord();
@@ -118,5 +120,28 @@ public class Player {
 		timer.increaseDuration(10);
 		
 		this.checkButton();
+		
+	}
+
+	/**
+	 * Player gets damage.
+	 */
+	public void getDamage() {
+		getGuessDamage();
+		getHealth().updateProgressBar();
+	}
+
+	/**
+	 * Start game.
+	 */
+	public void startGame() {
+		timer.startTimer();
+	}
+
+	/**
+	 * End game.
+	 */
+	public void endGame() {
+		user.endGame();
 	}
 }

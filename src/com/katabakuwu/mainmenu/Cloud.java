@@ -11,6 +11,8 @@ import javax.swing.JLabel;
  * @author Ryan Garnet Andrianto
  */
 public class Cloud extends JLabel {
+
+	private static final long serialVersionUID = 1L;
 	private int x, y, width, height, max_x, max_y, speed_x, speed_y;
 	private static final int REFRESH_RATE = 30;
 	

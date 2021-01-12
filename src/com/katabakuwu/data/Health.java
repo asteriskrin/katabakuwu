@@ -1,6 +1,5 @@
 package com.katabakuwu.data;
 
-import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
 /**
@@ -9,12 +8,12 @@ import javax.swing.JProgressBar;
  * @author FARHAN
  */
 public class Health {
-
+	
 	private JProgressBar bar;
 	private float value;
-	
 	/**
 	 * Constructor
+	 * @param game 
 	 */
 	public Health() {
 		this.value = (float) 100.0;
