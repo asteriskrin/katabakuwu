@@ -13,7 +13,7 @@ public class Timer {
 	private int duration;
 	private int maxDuration;
 	private JProgressBar bar;
-	private Game game;
+	private Player player;
 	private boolean isTimerRunning = false;
 	
 	/**
@@ -27,10 +27,10 @@ public class Timer {
 	 * 
 	 * @param duration
 	 */
-	public Timer(Game game, int duration) {
+	public Timer(Player player, int duration) {
 		this.duration = duration;
 		this.maxDuration = duration;
-		this.game = game;
+		this.player = player;
 	}
 	
 	/**
@@ -93,6 +93,8 @@ public class Timer {
 	 * Update progress bar
 	 */
 	public void updateProgressBar() {
+		if(bar == null)
+			return;
 		int barValue = (this.duration)*(100)/(this.maxDuration);
 		if(barValue > 100) barValue = 100;
 		bar.setValue(barValue);
@@ -125,7 +127,7 @@ public class Timer {
 					}
 					
 					if(duration <= 0) {
-						game.endGame();
+						endGame();
 						stopTimer();
 					}
 				}
@@ -134,6 +136,13 @@ public class Timer {
 		thread.start();
 	}
 	
+	/**
+	 * End game.
+	 */
+	protected void endGame() {
+		player.endGame();
+	}
+
 	/**
 	 * Stop timer.
 	 */

@@ -149,9 +149,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	 * Start game.
 	 */
 	public void startGame() {
-		Player player = new Player(this);
-		getUser().setPlayer(player);
-		
+		user.startGame();
 		getWordDatabase().clearStatus();
 		showGameplayPanel();
 	}

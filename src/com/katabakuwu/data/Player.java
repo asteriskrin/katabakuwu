@@ -1,6 +1,5 @@
 package com.katabakuwu.data;
 
-import com.katabakuwu.controller.Game;
 import com.katabakuwu.gameplay.GuessWord;
 
 /**
@@ -15,13 +14,15 @@ public class Player {
 	private Hint hint;
 	private Score score;
 	private GuessWord guessWord;
-	
+	private User user;
 	/**
 	 * Constructor
 	 */
-	public Player(Game game) {
-		health = new Health(game);
-		timer = new Timer(game, 120);
+	public Player(User user) {
+		this.user = user;
+		
+		health = new Health();
+		timer = new Timer(this, 120);
 		this.hint = new Hint((float)100.0);
 		this.score = new Score(0);
 		guessWord = new GuessWord();
@@ -128,5 +129,19 @@ public class Player {
 	public void getDamage() {
 		getGuessDamage();
 		getHealth().updateProgressBar();
+	}
+
+	/**
+	 * Start game.
+	 */
+	public void startGame() {
+		timer.startTimer();
+	}
+
+	/**
+	 * End game.
+	 */
+	public void endGame() {
+		user.endGame();
 	}
 }

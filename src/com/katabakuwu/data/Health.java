@@ -2,8 +2,6 @@ package com.katabakuwu.data;
 
 import javax.swing.JProgressBar;
 
-import com.katabakuwu.controller.Game;
-
 /**
  * Health class.
  * @author Ryan Garnet Andrianto
@@ -13,12 +11,11 @@ public class Health {
 	
 	private JProgressBar bar;
 	private float value;
-	
 	/**
 	 * Constructor
 	 * @param game 
 	 */
-	public Health(Game game) {
+	public Health() {
 		this.value = (float) 100.0;
 	}
 	

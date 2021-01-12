@@ -9,10 +9,12 @@ public class User {
 	private int level;
 	private Player player;
 	private JLabel levelLabel;
+	private Game game;
 	/**
 	 * Constructor
 	 */
 	public User(Game game, String name, int level) {
+		this.game = game;
 		this.name = name;
 		this.level = level;
 	}
@@ -79,5 +81,20 @@ public class User {
 	
 	public void updateLevel() {
 		levelLabel.setText("Lv. " + getLevel() + " " + getName());
+	}
+
+	/**
+	 * Start game.
+	 */
+	public void startGame() {
+		player = new Player(this);
+		player.startGame();
+	}
+
+	/**
+	 * End game.
+	 */
+	public void endGame() {
+		game.endGame();
 	}
 }
