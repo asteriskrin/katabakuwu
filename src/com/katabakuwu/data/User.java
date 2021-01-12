@@ -2,18 +2,22 @@ package com.katabakuwu.data;
 
 import javax.swing.JLabel;
 
+import com.katabakuwu.controller.Game;
+
 public class User {
 	private String name;
 	private int level;
 	private Player player;
 	private JLabel levelLabel;
+	private Game game;
 	
 	/**
 	 * Constructor
 	 */
-	public User(String name, int level) {
+	public User(Game game, String name, int level) {
 		this.name = name;
 		this.level = level;
+		this.game = game;
 	}
 
 	/**

@@ -3,21 +3,26 @@ package com.katabakuwu.data;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
+import com.katabakuwu.controller.Game;
+
 /**
  * Health class.
  * @author Ryan Garnet Andrianto
  * @author FARHAN
  */
 public class Health {
-
+	
+	private Game game;
 	private JProgressBar bar;
 	private float value;
 	
 	/**
 	 * Constructor
+	 * @param game 
 	 */
-	public Health() {
+	public Health(Game game) {
 		this.value = (float) 100.0;
+		this.game = game;
 	}
 	
 	/**
@@ -76,5 +81,6 @@ public class Health {
 	 */
 	public void updateProgressBar() {
 		bar.setValue((int) this.value);
+		game.endGame();
 	}
 }

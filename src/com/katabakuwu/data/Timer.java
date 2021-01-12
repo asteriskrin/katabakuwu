@@ -2,6 +2,8 @@ package com.katabakuwu.data;
 
 import javax.swing.JProgressBar;
 
+import com.katabakuwu.controller.Game;
+
 /**
  * Timer class.
  * @author Ryan Garnet Andrianto
@@ -11,6 +13,7 @@ public class Timer {
 	private int duration;
 	private int maxDuration;
 	private JProgressBar bar;
+	private Game game;
 	
 	/**
 	 * By default, the decrement speed is 1/second
@@ -19,12 +22,14 @@ public class Timer {
 
 	/**
 	 * Constructor
+	 * @param game 
 	 * 
 	 * @param duration
 	 */
-	public Timer(int duration) {
+	public Timer(Game game, int duration) {
 		this.duration = duration;
 		this.maxDuration = duration;
+		this.game = game;
 	}
 	
 	/**
@@ -90,6 +95,8 @@ public class Timer {
 		int barValue = (this.duration)*(100)/(this.maxDuration);
 		if(barValue > 100) barValue = 100;
 		bar.setValue(barValue);
+
+		game.endGame();
 	}
 	
 	/**
@@ -100,7 +107,6 @@ public class Timer {
 //		if(this.duration > this.decrementSpeed) setDuration(this.duration - this.decrementSpeed);
 //		else {
 //			setDuration(0);
-//			JOptionPane.showMessageDialog(null, "Permainan selesai");
 //		}
 	}
 }

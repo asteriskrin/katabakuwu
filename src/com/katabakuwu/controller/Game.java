@@ -49,13 +49,15 @@ public class Game implements ScoreboardControl {
 	 * End game.
 	 */
 	public void endGame() {
-		if(user.getPlayer(this).getHealth().getValue()<=0 || user.getPlayer(this).getTimer().getDuration()<=0) {
+		if(user.getPlayer().getHealth().getValue()<=0 || user.getPlayer().getTimer().getDuration()<=0) {
 			JOptionPane.showMessageDialog(null, "Permainan selesai");
 			try {
-				sendScore(user.getName(), user.getPlayer(this).getScore().getScore());
+				sendScore(user.getName(), user.getPlayer().getScore().getScore());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			user.getPlayer().getHealth().setValue((Float)null);
+			user.getPlayer().getTimer().setDuration((Integer) null);
 			mf.getContentPane().removeAll();
 			mf.setContentPane(new FrameMainMenu(this));
 			mf.revalidate();

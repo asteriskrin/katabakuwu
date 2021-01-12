@@ -26,9 +26,8 @@ public class FrameGame extends JPanel {
 		setVisible(true);
 		
 		// Create Player class instance
-		Player player = new Player();
+		Player player = new Player(game);
 		game.getUser().setPlayer(player);
-		
 		
 		JLabel profileImg = new JLabel();
 		profileImg.setLocation(10, 10);
@@ -93,6 +92,5 @@ public class FrameGame extends JPanel {
 		
 		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
 		add(cloud2);
-
 	}
 }
