@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import com.katabakuwu.controller.Game;
+import com.katabakuwu.framework.SoundJLayer;
 
 /**
  * ButtonScoreboard class.
@@ -64,6 +65,14 @@ public class ButtonScoreboard extends JButton implements ActionListener {
 			public void mouseEntered(MouseEvent e) {
 				setBackground(Color.decode("#a8aaf6"));
 				setBorder(BorderFactory.createLineBorder(Color.decode("#b4c6f0"), 3));
+				
+				Thread soundThread = new Thread() {
+					public void run() {
+						SoundJLayer sound = new SoundJLayer("assets/sounds/button_click.mp3");
+						sound.play();
+					}
+				};
+				soundThread.start();
 			}
 			
 			@Override
