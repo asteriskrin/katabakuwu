@@ -2,8 +2,6 @@ package com.katabakuwu.mainmenu;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -12,36 +10,18 @@ import javax.swing.JButton;
 
 import com.katabakuwu.controller.Game;
 
-/**
- * ButtonScoreboard class.
- * 
- * @author Ryan Garnet Andrianto
- */
-public class ButtonScoreboard extends JButton implements ActionListener {
+public class ButtonSetting extends JButton {
 
 	private static final long serialVersionUID = 1L;
-	private Game game;
-	private int x = 500, y = 386, width = 446, height = 60;
+	private int x = -1000, y = 466, width = 446, height = 60;
 	
-	/**
-	 * Constructor
-	 * 
-	 * @param game Game class instance
-	 * @param text Button text
-	 * @param x Button position x
-	 * @param y Button position y
-	 * @param width Button width
-	 * @param height Button height
-	 */
-	public ButtonScoreboard(Game game) {
-		super("Scoreboard");
+	public ButtonSetting(Game game) {
+		super("Setting");
 		
-		this.game = game;
-		this.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		this.setBounds(x, y, width, height);
+		setFont(new Font("Tahoma", Font.PLAIN, 24));
 		setBackground(Color.decode("#d5d5ff"));
 		setBorder(BorderFactory.createLineBorder(Color.decode("#aaaaff"), 3));
-		this.addActionListener(this);
+		setBounds(x, y, width, height);
 		addMouseListener(new MouseListener() {
 			
 			@Override
@@ -76,20 +56,10 @@ public class ButtonScoreboard extends JButton implements ActionListener {
 		bt.start();
 	}
 	
-	/**
-	 * Button click action.
-	 * 
-	 * @param e Button action event
-	 */
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		game.showScoreboard();
-	}
-	
 	private class ButtonThread extends Thread {
 		public void run() {
-			while(x > 10) {
-				x -= 5;
+			while(x < 10) {
+				x += 5;
 				setBounds(x, y, width, height);
 				try {
 					Thread.sleep(10);
@@ -99,5 +69,4 @@ public class ButtonScoreboard extends JButton implements ActionListener {
 			}
 		}
 	}
-	
 }

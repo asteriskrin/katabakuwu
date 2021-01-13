@@ -12,36 +12,24 @@ import javax.swing.JButton;
 
 import com.katabakuwu.controller.Game;
 
-/**
- * ButtonScoreboard class.
- * 
- * @author Ryan Garnet Andrianto
- */
-public class ButtonScoreboard extends JButton implements ActionListener {
+public class ButtonPlayGame extends JButton {
 
 	private static final long serialVersionUID = 1L;
-	private Game game;
-	private int x = 500, y = 386, width = 446, height = 60;
-	
-	/**
-	 * Constructor
-	 * 
-	 * @param game Game class instance
-	 * @param text Button text
-	 * @param x Button position x
-	 * @param y Button position y
-	 * @param width Button width
-	 * @param height Button height
-	 */
-	public ButtonScoreboard(Game game) {
-		super("Scoreboard");
-		
-		this.game = game;
-		this.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		this.setBounds(x, y, width, height);
+	private int x = -500, y = 306, width = 446, height = 60;
+	public ButtonPlayGame(Game game) {
+		super("Start Game");
+		setFont(new Font("Tahoma", Font.PLAIN, 24));
+		setBounds(x, y, width, height);
+		setForeground(Color.decode("#333333"));
 		setBackground(Color.decode("#d5d5ff"));
 		setBorder(BorderFactory.createLineBorder(Color.decode("#aaaaff"), 3));
-		this.addActionListener(this);
+		addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.startGame();
+			}
+		});
 		addMouseListener(new MouseListener() {
 			
 			@Override
@@ -68,36 +56,23 @@ public class ButtonScoreboard extends JButton implements ActionListener {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 			}
 		});
 		
-		ButtonThread bt = new ButtonThread();
-		bt.start();
-	}
-	
-	/**
-	 * Button click action.
-	 * 
-	 * @param e Button action event
-	 */
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		game.showScoreboard();
-	}
-	
-	private class ButtonThread extends Thread {
-		public void run() {
-			while(x > 10) {
-				x -= 5;
-				setBounds(x, y, width, height);
-				try {
-					Thread.sleep(10);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+		Thread thread = new Thread() {
+			public void run() {
+				while(x < 10) {
+					x += 5;
+					setBounds(x, y, width, height);
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
-		}
+		};
+		thread.start();
 	}
-	
 }
