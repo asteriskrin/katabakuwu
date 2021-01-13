@@ -7,13 +7,10 @@ import com.katabakuwu.mainmenu.ButtonPlayGame;
 import com.katabakuwu.mainmenu.ButtonScoreboard;
 import com.katabakuwu.mainmenu.ButtonSetting;
 import com.katabakuwu.mainmenu.Cloud;
+import com.katabakuwu.mainmenu.GameTitle;
 import com.katabakuwu.controller.Game;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
  * FrameMainMenu class.
@@ -41,10 +38,7 @@ public class FrameMainMenu extends JPanel {
 		picLabel.setIcon(new ImageIcon(new ImageIcon("assets/logo.jpg").getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
 		add(picLabel);
 		
-		JLabel lblNewLabel = new JLabel("Katabakuwu");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 32));
-		lblNewLabel.setBounds(10, 35, 456, 36);
+		JLabel lblNewLabel = new GameTitle();
 		add(lblNewLabel);
 		
 		/**
