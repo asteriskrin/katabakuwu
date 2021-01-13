@@ -2,6 +2,8 @@ package com.katabakuwu.mainmenu;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -11,7 +13,7 @@ import javax.swing.JButton;
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.framework.SoundJLayer;
 
-public class ButtonSetting extends JButton {
+public class ButtonSetting extends JButton implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private int x = -1000, y = 466, width = 446, height = 60;
@@ -23,6 +25,7 @@ public class ButtonSetting extends JButton {
 		setBackground(Color.decode("#d5d5ff"));
 		setBorder(BorderFactory.createLineBorder(Color.decode("#aaaaff"), 3));
 		setBounds(x, y, width, height);
+		addActionListener(this);
 		addMouseListener(new MouseListener() {
 			
 			@Override
@@ -77,5 +80,18 @@ public class ButtonSetting extends JButton {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Thread t = new Thread() {
+			public void run() {
+				SoundJLayer sound = new SoundJLayer("assets/sounds/button_secondary_click.mp3");
+				sound.play();
+
+//				game.showSetting();
+			}
+		};
+		t.start();
 	}
 }

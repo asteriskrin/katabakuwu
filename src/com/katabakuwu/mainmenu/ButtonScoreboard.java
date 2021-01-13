@@ -92,7 +92,15 @@ public class ButtonScoreboard extends JButton implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		game.showScoreboard();
+		Thread t = new Thread() {
+			public void run() {
+				SoundJLayer sound = new SoundJLayer("assets/sounds/button_secondary_click.mp3");
+				sound.play();
+
+				game.showScoreboard();
+			}
+		};
+		t.start();
 	}
 	
 	private class ButtonThread extends Thread {
