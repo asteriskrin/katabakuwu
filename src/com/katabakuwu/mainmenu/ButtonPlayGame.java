@@ -28,7 +28,15 @@ public class ButtonPlayGame extends JButton {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.startGame();
+				Thread t = new Thread() {
+					public void run() {
+						SoundJLayer sound = new SoundJLayer("assets/sounds/button_play_click.mp3");
+						sound.play();
+
+						game.startGame();
+					}
+				};
+				t.start();
 			}
 		});
 		addMouseListener(new MouseListener() {
