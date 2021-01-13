@@ -117,7 +117,7 @@ public class Game implements ScoreboardControl, ScreenController {
 			mf.setContentPane(panel);
 			mf.revalidate();
 			
-			playBGM("assets/sounds/main_theme0.mp3");
+			playBGM("assets/sounds/main_theme1.mp3");
 		} catch (Exception e2) {
 			System.out.println("Error while trying to show main menu panel.");
 		}
