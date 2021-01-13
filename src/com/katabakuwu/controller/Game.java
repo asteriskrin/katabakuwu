@@ -16,6 +16,7 @@ import com.katabakuwu.MainFrame;
 import com.katabakuwu.data.Player;
 import com.katabakuwu.data.User;
 import com.katabakuwu.framework.ScoreboardControl;
+import com.katabakuwu.framework.SoundJLayer;
 import com.katabakuwu.framework.WAVController;
 import com.katabakuwu.server.WordDatabase;
 
@@ -29,7 +30,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	public MainFrame mf;
 	private WordDatabase wordDatabase;
 	private User user;
-	private WAVController bgm;
+	private SoundJLayer bgm;
 	
 	public Game() {
 		wordDatabase = new WordDatabase();
@@ -116,7 +117,7 @@ public class Game implements ScoreboardControl, ScreenController {
 			mf.setContentPane(panel);
 			mf.revalidate();
 			
-			playBGM("./assets/sounds/main_theme.wav");
+			playBGM("assets/sounds/main_theme0.mp3");
 		} catch (Exception e2) {
 			System.out.println("Error while trying to show main menu panel.");
 		}
@@ -131,15 +132,8 @@ public class Game implements ScoreboardControl, ScreenController {
 		Thread thread = new Thread() {
 			public void run() {
 				
-				try {
-					if(bgm != null) {
-						bgm.pause();
-					}
-					bgm = new WAVController(filePath);
-					bgm.play();
-				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-					System.out.println("Error while playing music " + filePath);
-				}
+				bgm = new SoundJLayer(filePath);
+				bgm.play();
 			}
 		};
 		thread.start();
