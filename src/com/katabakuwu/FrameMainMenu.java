@@ -8,6 +8,7 @@ import com.katabakuwu.mainmenu.ButtonScoreboard;
 import com.katabakuwu.mainmenu.ButtonSetting;
 import com.katabakuwu.mainmenu.Cloud;
 import com.katabakuwu.mainmenu.GameTitle;
+import com.katabakuwu.mainmenu.LabelLogo;
 import com.katabakuwu.controller.Game;
 
 import java.awt.*;
@@ -32,10 +33,7 @@ public class FrameMainMenu extends JPanel {
 		setLayout(null);
 		setVisible(true);
 		
-		JLabel picLabel = new JLabel();
-		picLabel.setLocation(165, 100);
-		picLabel.setSize(150, 150);
-		picLabel.setIcon(new ImageIcon(new ImageIcon("assets/logo.jpg").getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+		JLabel picLabel = new LabelLogo();
 		add(picLabel);
 		
 		JLabel lblNewLabel = new GameTitle();
