@@ -3,13 +3,15 @@ package com.katabakuwu;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import com.katabakuwu.mainmenu.ButtonPlayGame;
 import com.katabakuwu.mainmenu.ButtonScoreboard;
+import com.katabakuwu.mainmenu.ButtonSetting;
 import com.katabakuwu.mainmenu.Cloud;
+import com.katabakuwu.mainmenu.GameTitle;
+import com.katabakuwu.mainmenu.LabelLogo;
 import com.katabakuwu.controller.Game;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * FrameMainMenu class.
@@ -31,39 +33,22 @@ public class FrameMainMenu extends JPanel {
 		setLayout(null);
 		setVisible(true);
 		
-		JLabel picLabel = new JLabel();
-		picLabel.setLocation(165, 100);
-		picLabel.setSize(150, 150);
-		picLabel.setIcon(new ImageIcon(new ImageIcon("assets/logo.jpg").getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+		JLabel picLabel = new LabelLogo();
 		add(picLabel);
 		
-		JLabel lblNewLabel = new JLabel("Katabakuwu");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 32));
-		lblNewLabel.setBounds(10, 35, 456, 36);
+		JLabel lblNewLabel = new GameTitle();
 		add(lblNewLabel);
 		
 		/**
 		 * Start game button.
 		 */
-		JButton btnStartGame = new JButton("Start Game");
-		btnStartGame.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnStartGame.setBounds(10, 306, 446, 60);
-		btnStartGame.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				game.startGame();
-			}
-		});
+		JButton btnStartGame = new ButtonPlayGame(game);
 		add(btnStartGame);
 		
-		JButton btnScoreboard = new ButtonScoreboard(game, "Scoreboard", 10, 386, 446, 60);
+		JButton btnScoreboard = new ButtonScoreboard(game);
 		add(btnScoreboard);
 		
-		JButton btnSettings = new JButton("Settings");
-		btnSettings.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnSettings.setBounds(10, 466, 446, 60);
+		JButton btnSettings = new ButtonSetting(game);
 		add(btnSettings);
 		
 		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);

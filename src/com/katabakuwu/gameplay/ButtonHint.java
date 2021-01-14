@@ -7,7 +7,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import com.katabakuwu.FrameGame;
 import com.katabakuwu.controller.Game;
+import com.katabakuwu.data.Player;
+import com.katabakuwu.framework.SoundJLayer;
 
 
 /**
@@ -21,8 +24,9 @@ public class ButtonHint extends JButton implements ActionListener {
 	
 	private Game game;
 	private int x, y, width, height;
+	private FrameGame fg;
 	
-	public ButtonHint(Game game, int x, int y, int width, int height) {
+	public ButtonHint(FrameGame fg, Game game, int x, int y, int width, int height) {
 		super("?");
 		
 		this.x = x;
@@ -30,6 +34,7 @@ public class ButtonHint extends JButton implements ActionListener {
 		this.width = width;
 		this.height = height;
 		this.game = game;
+		this.fg = fg;
 		
 		setForeground(Color.WHITE);
 		setBackground(Color.MAGENTA);
@@ -41,8 +46,19 @@ public class ButtonHint extends JButton implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		game.getUser().getPlayer().useHint();
-		game.getUser().getPlayer().checkButton();
+		Thread t = new Thread() {
+			public void run() {
+				SoundJLayer sound = new SoundJLayer("assets/sounds/button_hint.mp3");
+				sound.play();
+				
+				Player p = game.getUser().getPlayer();
+				p.useHint();
+				p.checkButton();
+				
+				fg.addHintObject(p.getRandomUnguessedLetter());
+			}
+		};
+		t.start();
 	}
 	
 }
