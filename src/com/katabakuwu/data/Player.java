@@ -84,12 +84,20 @@ public class Player {
 	public void useHint() {
 		if(this.isEnoughHintValue()) {
 			hint.reduceValue(((float)timer.getDuration()/timer.getMaxDuration())*75);
-			System.out.println("USE HINT: " + guessWord.getUnguessedLetter());
 		}
 		else {
 			hint.disableButton();
 			System.out.println("Insufficient hint point.");
 		}
+	}
+	
+	/**
+	 * Get random unguessed letter.
+	 * 
+	 * @return Unguessed letter
+	 */
+	public char getRandomUnguessedLetter() {
+		return guessWord.getUnguessedLetter();
 	}
 	
 	/**

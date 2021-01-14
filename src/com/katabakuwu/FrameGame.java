@@ -9,6 +9,7 @@ import com.katabakuwu.gameplay.*;
 import com.katabakuwu.mainmenu.Cloud;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Gameplay panel.
@@ -16,7 +17,8 @@ import java.awt.*;
 public class FrameGame extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-
+	private ArrayList<HintObject> hintObjects = new ArrayList<HintObject>();
+	
 	public FrameGame(Game game) {
 		setBackground(Color.decode("#87CEEB"));
 		setBounds(new Rectangle(0,0,480,640));
@@ -67,7 +69,7 @@ public class FrameGame extends JPanel {
 		player.getScore().setLabel(scoreLabel);
 		player.getScore().updateScore();
 		
-		ButtonHint hintBtn = new ButtonHint(game, 10, 292, 60, 60);
+		ButtonHint hintBtn = new ButtonHint(this, game, 10, 292, 60, 60);
 		add(hintBtn);
 		player.getHint().setButton(hintBtn);
 		
@@ -89,5 +91,19 @@ public class FrameGame extends JPanel {
 		
 		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
 		add(cloud2);
+	}
+	
+	public void addHintObject(char hintChar) {
+		HintObject ho = new HintObject(this, hintChar, -50, 100, 60, 60);
+		hintObjects.add(ho);
+		ho.startMoving();
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		for(HintObject ho : hintObjects) {
+			ho.draw(g);
+		}
 	}
 }
