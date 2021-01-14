@@ -1,4 +1,4 @@
-package com.katabakuwu;
+package com.katabakuwu.mainmenu;
 
 import java.awt.Color;
 import java.awt.Font;
