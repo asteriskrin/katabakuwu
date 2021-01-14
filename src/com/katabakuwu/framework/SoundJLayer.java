@@ -51,4 +51,8 @@ public class SoundJLayer extends PlaybackListener implements Runnable {
         }
 
     }
+    
+    public void stop() {
+    	this.player.stop();
+    }
 }

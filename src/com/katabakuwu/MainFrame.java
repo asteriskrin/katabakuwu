@@ -1,5 +1,6 @@
 package com.katabakuwu;
 
+import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
@@ -17,6 +18,10 @@ public class MainFrame extends JFrame{
 		setIconImage(Toolkit.getDefaultToolkit().getImage("assets/logo.jpg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(new Rectangle(100,100,480,640));
+		
+		// Start at center of screen
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
 		game.showMainMenu();
 	}

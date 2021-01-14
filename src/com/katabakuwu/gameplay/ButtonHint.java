@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import com.katabakuwu.controller.Game;
+import com.katabakuwu.framework.SoundJLayer;
 
 
 /**
@@ -41,8 +42,16 @@ public class ButtonHint extends JButton implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		game.getUser().getPlayer().useHint();
-		game.getUser().getPlayer().checkButton();
+		Thread t = new Thread() {
+			public void run() {
+				SoundJLayer sound = new SoundJLayer("assets/sounds/button_hint.mp3");
+				sound.play();
+				
+				game.getUser().getPlayer().useHint();
+				game.getUser().getPlayer().checkButton();
+			}
+		};
+		t.start();
 	}
 	
 }
