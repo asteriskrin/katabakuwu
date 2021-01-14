@@ -50,7 +50,7 @@ public class FrameScoreboard extends JPanel {
 		titlePane.setHorizontalAlignment(SwingConstants.CENTER);
 		titlePane.setFont(new Font("Arial", Font.BOLD, 20));
 		titlePane.setText("SCOREBOARD");
-		titlePane.setBackground(new Color(255, 0, 255, 50));
+		titlePane.setBackground(Color.decode("#d5d5ff"));
 		titlePane.setBounds(10, 70, 446, 39);
 		add(titlePane);
 		
@@ -62,7 +62,7 @@ public class FrameScoreboard extends JPanel {
 		list.setSelectionModel(new DisabledItemSelectionModel());
 		list.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		list.setVisibleRowCount(20);
-		list.setBackground(new Color(192, 192, 192, 100));
+		list.setBackground(Color.decode("#e8e8e8"));
 		list.setBounds(10, 119, 446, 399);
 		add(list);
 		
@@ -82,8 +82,8 @@ public class FrameScoreboard extends JPanel {
 		 * Close button.
 		 */
 		JButton closeBtn = new JButton("Close");
-		closeBtn.setForeground(Color.WHITE);
-		closeBtn.setBackground(Color.MAGENTA);
+		closeBtn.setForeground(Color.BLACK);
+		closeBtn.setBackground(Color.decode("#dd55ff"));
 		closeBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		closeBtn.setBounds(10, 528, 446, 50);
 		closeBtn.addActionListener(new ActionListener() {
