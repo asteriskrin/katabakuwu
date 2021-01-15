@@ -9,6 +9,7 @@ import com.katabakuwu.mainmenu.ButtonSetting;
 import com.katabakuwu.mainmenu.Cloud;
 import com.katabakuwu.mainmenu.GameTitle;
 import com.katabakuwu.mainmenu.LabelLogo;
+import com.katabakuwu.mainmenu.PanelSetting;
 import com.katabakuwu.controller.Game;
 
 import java.awt.*;
@@ -20,7 +21,11 @@ import java.awt.*;
  * @author Ryan Garnet Andrianto
  */
 public class FrameMainMenu extends JPanel {
-
+	
+	private PanelSetting panel;
+	public boolean enabled;
+	private JButton btnStartGame, btnScoreboard, btnSettings;
+	
 	private static final long serialVersionUID = 2883848038660074213L;
 	/**
 	 * Create the frame.
@@ -33,6 +38,9 @@ public class FrameMainMenu extends JPanel {
 		setLayout(null);
 		setVisible(true);
 		
+		panel = new PanelSetting(this);
+		add(panel);
+		
 		JLabel picLabel = new LabelLogo();
 		add(picLabel);
 		
@@ -42,13 +50,13 @@ public class FrameMainMenu extends JPanel {
 		/**
 		 * Start game button.
 		 */
-		JButton btnStartGame = new ButtonPlayGame(game);
+		btnStartGame = new ButtonPlayGame(game, this);
 		add(btnStartGame);
 		
-		JButton btnScoreboard = new ButtonScoreboard(game);
+		btnScoreboard = new ButtonScoreboard(game, this);
 		add(btnScoreboard);
 		
-		JButton btnSettings = new ButtonSetting(game);
+		btnSettings = new ButtonSetting(game, this);
 		add(btnSettings);
 		
 		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);
@@ -56,5 +64,22 @@ public class FrameMainMenu extends JPanel {
 		
 		JLabel cloud2 = new Cloud(-50, 250, 400, 250, 2, 0, 480, 640);
 		add(cloud2);
+		
+		enabled = true;
+	}
+	
+	public void showSetting() {
+		setComponentZOrder(this.panel, 0);
+		this.panel.setVisible(true);
+		
+		enabled = false;
+		
+		setButtonStatus();
+	}
+	
+	public void setButtonStatus() {
+		btnStartGame.setEnabled(enabled);
+		btnScoreboard.setEnabled(enabled);
+		btnSettings.setEnabled(enabled);
 	}
 }
