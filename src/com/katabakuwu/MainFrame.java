@@ -22,7 +22,6 @@ public class MainFrame extends JFrame{
 		// Start at center of screen
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-		
-		game.showMainMenu();
+
 	}
 }
