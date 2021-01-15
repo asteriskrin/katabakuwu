@@ -93,13 +93,14 @@ public class Game implements ScoreboardControl, ScreenController {
 	@Override
 	public void sendScore(String authKey, int score, int level) throws IOException {
 		URL url = new URL("https://katabakuwu.asteriskrin.my.id/api/scoreboard/post/?auth_key=" + authKey + "&score=" + score + "&level=" + level);
-//		System.out.println(url);
+		System.out.println(url);
 		HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+		httpCon.setRequestProperty("Accept-Charset", "UTF-8");
 		httpCon.setDoOutput(true);
 		httpCon.setRequestMethod("GET");
 		OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
-//		System.out.println(httpCon.getResponseCode());
-//		System.out.println(httpCon.getResponseMessage());
+		System.out.println(httpCon.getResponseCode());
+		System.out.println(httpCon.getResponseMessage());
 		out.close();
 	}
 	
