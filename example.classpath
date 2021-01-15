@@ -8,5 +8,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="{path to your project}/lib/jl1.0.1.jar"/>
+	<classpathentry kind="lib" path="{path to your project}/lib/gson-2.8.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

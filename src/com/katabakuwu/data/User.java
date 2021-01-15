@@ -10,6 +10,8 @@ public class User {
 	private Player player;
 	private JLabel levelLabel;
 	private Game game;
+	private String authKey;
+	
 	/**
 	 * Constructor
 	 */
@@ -96,5 +98,13 @@ public class User {
 	 */
 	public void endGame() {
 		game.endGame();
+	}
+
+	public String getAuthKey() {
+		return authKey;
+	}
+	
+	public void setAuthKey(String key) {
+		authKey = key;
 	}
 }

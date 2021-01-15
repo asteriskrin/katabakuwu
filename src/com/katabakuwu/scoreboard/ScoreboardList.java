@@ -30,7 +30,7 @@ public class ScoreboardList extends AbstractListModel<String> {
 	 * @throws MalformedURLException Exception when the user is not accessible
 	 */
 	public void updateData() throws MalformedURLException {
-		URL url = new URL("https://katabakuwu.asteriskrin.my.id/getScoreboard.php");
+		URL url = new URL("https://katabakuwu.asteriskrin.my.id/api/scoreboard/get");
 
 		try {
 			Scanner sc = new Scanner(url.openStream());

@@ -6,5 +6,5 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public interface ScoreboardControl {
-	public void sendScore(String name, int score) throws IOException;
+	public void sendScore(String authKey, int score, int level) throws IOException;
 }
