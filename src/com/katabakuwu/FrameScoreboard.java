@@ -66,13 +66,6 @@ public class FrameScoreboard extends JPanel {
 		list.setBounds(10, 119, 446, 399);
 		add(list);
 		
-		for (int i = 0; i < list.getModel().getSize(); i++) {
-            String item = list.getModel().getElementAt(i);
-            System.out.println("test1");
-            System.out.println(item);
-            System.out.println("test2");
-        }
-		
 		// Create Thread Scoreboard instance
 		ThreadScoreboard ts = new ThreadScoreboard(list, sl);
 		// Start the thread
