@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import com.katabakuwu.FrameMainMenu;
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.framework.SoundJLayer;
 
@@ -17,7 +18,7 @@ public class ButtonPlayGame extends JButton {
 
 	private static final long serialVersionUID = 1L;
 	private int x = -500, y = 306, width = 446, height = 60;
-	public ButtonPlayGame(Game game) {
+	public ButtonPlayGame(Game game, FrameMainMenu frameMainMenu) {
 		super("Start Game");
 		setFont(new Font("Tahoma", Font.PLAIN, 24));
 		setBounds(x, y, width, height);
@@ -53,22 +54,26 @@ public class ButtonPlayGame extends JButton {
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				setBackground(Color.decode("#d5d5ff"));
-				setBorder(BorderFactory.createLineBorder(Color.decode("#aaaaff"), 3));
+				if(frameMainMenu.enabled) {
+					setBackground(Color.decode("#d5d5ff"));
+					setBorder(BorderFactory.createLineBorder(Color.decode("#aaaaff"), 3));
+				}
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				setBackground(Color.decode("#a8aaf6"));
-				setBorder(BorderFactory.createLineBorder(Color.decode("#b4c6f0"), 3));
-				
-				Thread soundThread = new Thread() {
-					public void run() {
-						SoundJLayer sound = new SoundJLayer("assets/sounds/button_click.mp3");
-						sound.play();
-					}
-				};
-				soundThread.start();
+				if(frameMainMenu.enabled) {
+					setBackground(Color.decode("#a8aaf6"));
+					setBorder(BorderFactory.createLineBorder(Color.decode("#b4c6f0"), 3));
+					
+					Thread soundThread = new Thread() {
+						public void run() {
+							SoundJLayer sound = new SoundJLayer("assets/sounds/button_click.mp3");
+							sound.play();
+						}
+					};
+					soundThread.start();
+				}
 			}
 			
 			@Override

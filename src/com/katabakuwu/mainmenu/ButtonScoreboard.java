@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import com.katabakuwu.FrameMainMenu;
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.framework.SoundJLayer;
 
@@ -34,7 +35,7 @@ public class ButtonScoreboard extends JButton implements ActionListener {
 	 * @param width Button width
 	 * @param height Button height
 	 */
-	public ButtonScoreboard(Game game) {
+	public ButtonScoreboard(Game game, FrameMainMenu frameMainMenu) {
 		super("Scoreboard");
 		
 		this.game = game;
@@ -57,22 +58,26 @@ public class ButtonScoreboard extends JButton implements ActionListener {
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				setBackground(Color.decode("#d5d5ff"));
-				setBorder(BorderFactory.createLineBorder(Color.decode("#aaaaff"), 3));
+				if(frameMainMenu.enabled) {
+					setBackground(Color.decode("#d5d5ff"));
+					setBorder(BorderFactory.createLineBorder(Color.decode("#aaaaff"), 3));
+				}
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				setBackground(Color.decode("#a8aaf6"));
-				setBorder(BorderFactory.createLineBorder(Color.decode("#b4c6f0"), 3));
-				
-				Thread soundThread = new Thread() {
-					public void run() {
-						SoundJLayer sound = new SoundJLayer("assets/sounds/button_click.mp3");
-						sound.play();
-					}
-				};
-				soundThread.start();
+				if(frameMainMenu.enabled) {
+					setBackground(Color.decode("#a8aaf6"));
+					setBorder(BorderFactory.createLineBorder(Color.decode("#b4c6f0"), 3));
+					
+					Thread soundThread = new Thread() {
+						public void run() {
+							SoundJLayer sound = new SoundJLayer("assets/sounds/button_click.mp3");
+							sound.play();
+						}
+					};
+					soundThread.start();
+				}
 			}
 			
 			@Override
