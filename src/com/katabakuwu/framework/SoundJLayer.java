@@ -44,19 +44,18 @@ public class SoundJLayer extends PlaybackListener implements Runnable {
     }
 
     public void playbackStarted(PlaybackEvent playbackEvent) {
-        // do something
     }
 
     public void playbackFinished(PlaybackEvent playbackEvent) {
-    	if(loop) {
-        	play();
-        }
     }
 
     public void run() {
         try {
-    		status = "play";
+        	status = "play";
             this.player.play();
+            if(loop && status == "play") {
+            	play();
+            }
         } catch (javazoom.jl.decoder.JavaLayerException ex) {
             ex.printStackTrace();
         }
