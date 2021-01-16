@@ -9,6 +9,9 @@ import javax.swing.border.LineBorder;
 import com.katabakuwu.FrameMainMenu;
 
 public class PanelSetting extends JPanel{
+
+	private static final long serialVersionUID = 1L;
+
 	public PanelSetting(FrameMainMenu frameMainMenu) {
 		setBorder(new LineBorder(Color.BLUE, 8));
 		setBounds(90, 220, 300, 200);
