@@ -260,10 +260,10 @@ public class Game implements ScoreboardControl, ScreenController {
 	private void playBGM(String filePath) {
 		Thread thread = new Thread() {
 			public void run() {
-				if(bgm != null) {
+				if(bgm != null && bgm.status.equals("play")) {
 					bgm.stop();
 				}
-				bgm = new SoundJLayer(filePath);
+				bgm = new SoundJLayer(filePath, true);
 				bgm.play();
 			}
 		};
