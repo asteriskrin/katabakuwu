@@ -1,5 +1,6 @@
 package com.katabakuwu;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -27,6 +28,7 @@ public class GameKeyboard extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setOpaque(true);
 		panel.setBounds(10, 436, 450, 135);
+		panel.setBackground(Color.decode("#afe9dd"));
 		contentPane.add(panel);
 		
 		GridBagLayout gbl_panel = new GridBagLayout();
@@ -46,6 +48,7 @@ public class GameKeyboard extends JPanel {
 		gbc_keyboardTop.fill = GridBagConstraints.BOTH;
 		gbc_keyboardTop.gridx = 0;
 		gbc_keyboardTop.gridy = 0;
+		keyboardTop.setOpaque(false);
 		panel.add(keyboardTop, gbc_keyboardTop);
 		keyboardTop.setLayout(new GridLayout(0, 10, 2, 0));
 		
@@ -68,6 +71,7 @@ public class GameKeyboard extends JPanel {
 		gbc_keyboardMid.fill = GridBagConstraints.BOTH;
 		gbc_keyboardMid.gridx = 0;
 		gbc_keyboardMid.gridy = 1;
+		keyboardMid.setOpaque(false);
 		panel.add(keyboardMid, gbc_keyboardMid);
 		GridBagLayout gbl_keyboardMid = new GridBagLayout();
 		gbl_keyboardMid.columnWidths = new int[] {45};
@@ -98,6 +102,7 @@ public class GameKeyboard extends JPanel {
 		gbc_keyboardBtm.fill = GridBagConstraints.BOTH;
 		gbc_keyboardBtm.gridx = 0;
 		gbc_keyboardBtm.gridy = 2;
+		keyboardBtm.setOpaque(false);
 		panel.add(keyboardBtm, gbc_keyboardBtm);
 		GridBagLayout gbl_keyboardBtm = new GridBagLayout();
 		gbl_keyboardBtm.columnWidths = new int[] {45};
@@ -121,6 +126,10 @@ public class GameKeyboard extends JPanel {
 			keyboardBtm.add(btnZ, gbc_btnZ);
 			btnZ.addActionListener(buttonKeyHandler);
 			keyboard.add(btnZ);
+		}
+		
+		for(JButton k : keyboard) {
+			k.setBackground(Color.decode("#ececec"));
 		}
 		
 		//KeyboardHandler keyboardHandler = new KeyboardHandler(game, guessTextField);
