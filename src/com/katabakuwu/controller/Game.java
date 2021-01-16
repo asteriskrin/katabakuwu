@@ -12,8 +12,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 
 import com.google.gson.JsonElement;
@@ -24,11 +22,9 @@ import com.katabakuwu.FrameMainMenu;
 import com.katabakuwu.FrameScoreboard;
 import com.katabakuwu.MainFrame;
 import com.katabakuwu.PanelMainMenuLoading;
-import com.katabakuwu.data.Player;
 import com.katabakuwu.data.User;
 import com.katabakuwu.framework.ScoreboardControl;
 import com.katabakuwu.framework.SoundJLayer;
-import com.katabakuwu.framework.WAVController;
 import com.katabakuwu.server.WordDatabase;
 
 /**

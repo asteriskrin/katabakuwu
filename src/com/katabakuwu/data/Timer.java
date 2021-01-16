@@ -2,8 +2,6 @@ package com.katabakuwu.data;
 
 import javax.swing.JProgressBar;
 
-import com.katabakuwu.controller.Game;
-
 /**
  * Timer class.
  * @author Ryan Garnet Andrianto
