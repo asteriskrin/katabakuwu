@@ -290,4 +290,22 @@ public class Game implements ScoreboardControl, ScreenController {
 		mf.revalidate();
 	}
 
+	/**
+	 * Reset saved game data.
+	 */
+	public void resetData() {
+		// delete save key
+		try {
+			File file = new File("./data/key.uwu");
+			file.delete();
+		} catch (Exception e) {
+			System.out.println("Error while deleting key.uwu");
+		}
+		// reset user instance data
+		user.resetData();
+		// restart game
+		showMainMenuLoading();
+		startDataLoad();
+	}
+
 }
