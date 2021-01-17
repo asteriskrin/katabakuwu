@@ -7,9 +7,13 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 import com.katabakuwu.FrameMainMenu;
+import com.katabakuwu.controller.Game;
 
 public class PanelSetting extends JPanel{
-	public PanelSetting(FrameMainMenu frameMainMenu) {
+
+	private static final long serialVersionUID = 1L;
+
+	public PanelSetting(FrameMainMenu frameMainMenu, Game game) {
 		setBorder(new LineBorder(Color.BLUE, 8));
 		setBounds(90, 220, 300, 200);
 		setVisible(false);
@@ -81,10 +85,8 @@ public class PanelSetting extends JPanel{
 				
 				int n = JOptionPane.showOptionDialog(null,"Apakah Anda yakin untuk reset data?",
 						"Reset Data", 0, JOptionPane.INFORMATION_MESSAGE, null, options, null);
-				if (n == 1) { //Tidak
-					System.out.println("n = 1");
-				} else {
-					System.out.println("n = 0");
+				if (n == 0) {
+					game.resetData();
 				}
 			}
 		});

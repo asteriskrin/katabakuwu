@@ -8,14 +8,22 @@ public class SoundJLayer extends PlaybackListener implements Runnable {
     private String filePath;
     private AdvancedPlayer player;
     private Thread playerThread;
-
+    public String status = "stop";
+    public boolean loop;
+    
     public SoundJLayer(String filePath) {
         this.filePath = filePath;
+        this.loop = false;
+    }
+    
+    public SoundJLayer(String filePath, boolean loop) {
+        this.filePath = filePath;
+        this.loop = loop;
     }
 
     public void play() {
         try {
-            String urlAsString =
+        	String urlAsString =
                 "file:///" +
                 new java.io.File(".").getCanonicalPath() + "/" +
                 this.filePath;
@@ -36,16 +44,18 @@ public class SoundJLayer extends PlaybackListener implements Runnable {
     }
 
     public void playbackStarted(PlaybackEvent playbackEvent) {
-        // do something
     }
 
     public void playbackFinished(PlaybackEvent playbackEvent) {
-    	// do something
     }
 
     public void run() {
         try {
+        	status = "play";
             this.player.play();
+            if(loop && status == "play") {
+            	play();
+            }
         } catch (javazoom.jl.decoder.JavaLayerException ex) {
             ex.printStackTrace();
         }
@@ -54,5 +64,6 @@ public class SoundJLayer extends PlaybackListener implements Runnable {
     
     public void stop() {
     	this.player.stop();
+    	status = "stop";
     }
 }

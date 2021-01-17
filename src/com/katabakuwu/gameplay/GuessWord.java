@@ -3,7 +3,10 @@ package com.katabakuwu.gameplay;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import com.katabakuwu.GameKeyboard;
 import com.katabakuwu.server.WordDatabase;
 
 /**
@@ -17,10 +20,12 @@ public class GuessWord {
 	public ArrayList<Letter> letters;
 	private WordDatabase wordDb;
 	public Word displayedWord;
+	private boolean[] guessedLetter;
 	
 	public GuessWord() {
 		letters = new ArrayList<Letter>();
 		wordDb = new WordDatabase();
+		guessedLetter = new boolean[26];
 	}
 	
 	/**
@@ -82,9 +87,15 @@ public class GuessWord {
 	 * 
 	 * @param textField
 	 */
-	public void updateWordDisplay(JTextField word, JTextField clue) {
+	public void updateWordDisplay(JTextField word, JTextField clue, GameKeyboard gameKeyboard) {
 		word.setText(buildWord());
 		clue.setText(displayedWord.getClue());
+		for(JButton j : gameKeyboard.keyboard) {
+			if (canBeGuessed(j.getText().charAt(0)) && !guessedLetter[j.getText().charAt(0)-65])
+				j.setEnabled(true);
+			else
+				j.setEnabled(false);
+		}
 	}
 	
 	/**
@@ -98,6 +109,8 @@ public class GuessWord {
 	    for(Letter l : letters) l.setStatus(false);
 	    letters.clear();
 	    setWord();
+	    for(int i = 0; i < guessedLetter.length; i++)
+	    	guessedLetter[i] = false;
 	}
 	
 	/**
@@ -121,7 +134,22 @@ public class GuessWord {
 				isFound = true;
 			}
 		}
+		guessedLetter[letter-65] = true;
 		return isFound;
+	}
+	
+	public boolean canBeGuessed(char letter) {
+		boolean isFound = false;
+		for(int i = 0; i < letters.size(); i++) {
+			if (letters.get(i).getLetter() != letter)
+				continue;
+			
+			isFound = true;
+			if (!letters.get(i).getStatus()) {
+				return true;
+			}
+		}
+		return !isFound;
 	}
 	
 	/**

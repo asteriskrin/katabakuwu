@@ -12,8 +12,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 
 import com.google.gson.JsonElement;
@@ -24,11 +22,9 @@ import com.katabakuwu.FrameMainMenu;
 import com.katabakuwu.FrameScoreboard;
 import com.katabakuwu.MainFrame;
 import com.katabakuwu.PanelMainMenuLoading;
-import com.katabakuwu.data.Player;
 import com.katabakuwu.data.User;
 import com.katabakuwu.framework.ScoreboardControl;
 import com.katabakuwu.framework.SoundJLayer;
-import com.katabakuwu.framework.WAVController;
 import com.katabakuwu.server.WordDatabase;
 
 /**
@@ -260,10 +256,10 @@ public class Game implements ScoreboardControl, ScreenController {
 	private void playBGM(String filePath) {
 		Thread thread = new Thread() {
 			public void run() {
-				if(bgm != null) {
+				if(bgm != null && bgm.status.equals("play")) {
 					bgm.stop();
 				}
-				bgm = new SoundJLayer(filePath);
+				bgm = new SoundJLayer(filePath, true);
 				bgm.play();
 			}
 		};
@@ -288,6 +284,24 @@ public class Game implements ScoreboardControl, ScreenController {
 		mf.getContentPane().removeAll();
 		mf.setContentPane(panel);
 		mf.revalidate();
+	}
+
+	/**
+	 * Reset saved game data.
+	 */
+	public void resetData() {
+		// delete save key
+		try {
+			File file = new File("./data/key.uwu");
+			file.delete();
+		} catch (Exception e) {
+			System.out.println("Error while deleting key.uwu");
+		}
+		// reset user instance data
+		user.resetData();
+		// restart game
+		showMainMenuLoading();
+		startDataLoad();
 	}
 
 }

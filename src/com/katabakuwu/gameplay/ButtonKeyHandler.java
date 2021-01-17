@@ -40,7 +40,7 @@ public class ButtonKeyHandler implements ActionListener {
 		
 		if(response) {
 			// Guess successful
-			game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
+			game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue, gameKeyboard);
 			
 			source.setEnabled(false);
 			if(game.getUser().getPlayer().getGuessWord().isWordGuessed() && game.getUser().getPlayer().getTimer().getDuration()>0) {
@@ -55,9 +55,8 @@ public class ButtonKeyHandler implements ActionListener {
 							System.out.println("Error A01");
 						}
 						
-						for(JButton j : gameKeyboard.keyboard) j.setEnabled(true);
 						game.getUser().getPlayer().getGuessWord().getNewWord(guessText, clue);
-						game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue);
+						game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessText, clue, gameKeyboard);
 						game.getUser().getPlayer().getBonus();
 						game.getUser().increaseLevel();
 						game.getUser().updateLevel();
