@@ -14,12 +14,12 @@ import java.util.ArrayList;
 /**
  * Gameplay panel.
  */
-public class FrameGame extends JPanel {
+public class PanelGameplay extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<HintObject> hintObjects = new ArrayList<HintObject>();
 	
-	public FrameGame(Game game) {
+	public PanelGameplay(Game game) {
 		setBackground(Color.decode("#87CEEB"));
 		setBounds(new Rectangle(0,0,480,640));
 		setBorder(new EmptyBorder(5, 5, 5, 5));

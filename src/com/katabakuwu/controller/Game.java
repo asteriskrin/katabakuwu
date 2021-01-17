@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.katabakuwu.FrameGame;
+import com.katabakuwu.PanelGameplay;
 import com.katabakuwu.FrameMainMenu;
 import com.katabakuwu.FrameScoreboard;
 import com.katabakuwu.MainFrame;
@@ -293,7 +293,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	 */
 	@Override
 	public void showGameplayPanel() {
-		FrameGame panel = new FrameGame(this);
+		PanelGameplay panel = new PanelGameplay(this);
 		mf.getContentPane().removeAll();
 		mf.setContentPane(panel);
 		mf.revalidate();
