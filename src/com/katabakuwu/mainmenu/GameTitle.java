@@ -10,7 +10,7 @@ public class GameTitle extends JLabel {
 	private static final long serialVersionUID = 1L;
 	private int x = 10, y = -500, width = 456, height = 36;
 	public GameTitle() {
-		super("Katabakuwu");
+		super("KatabakUWU");
 		setHorizontalAlignment(SwingConstants.CENTER);
 		setFont(new Font("Arial", Font.BOLD, 32));
 		setBounds(x, y, width, height);
@@ -21,7 +21,7 @@ public class GameTitle extends JLabel {
 	
 	private class LogoThread extends Thread {
 		public void run() {
-			while(y < 35) {
+			while(y < 220) {
 				y += 5;
 				setBounds(x, y, width, height);
 				try {
