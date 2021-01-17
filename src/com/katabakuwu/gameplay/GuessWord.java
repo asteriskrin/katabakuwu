@@ -6,7 +6,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import com.katabakuwu.GameKeyboard;
 import com.katabakuwu.server.WordDatabase;
 
 /**

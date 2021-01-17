@@ -1,4 +1,4 @@
-package com.katabakuwu;
+package com.katabakuwu.gameplay;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import com.katabakuwu.controller.Game;
-import com.katabakuwu.gameplay.ButtonKeyHandler;
 
 public class GameKeyboard extends JPanel {
 	
