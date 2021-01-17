@@ -44,9 +44,9 @@ public class PanelSetting extends JPanel{
 	         }
 	         
 	         public void mouseReleased(MouseEvent e) {
-		            float volume = (float) sliderVolume.getValue()/sliderVolume.getMaximum();
-		            game.setVolume(volume);
-		         }
+	            float volume = (float) sliderVolume.getValue()/sliderVolume.getMaximum();
+	            game.setVolume(volume);
+	         }
 	      });
 		
 //		JLabel lblBrightness = new JLabel("Brightness");

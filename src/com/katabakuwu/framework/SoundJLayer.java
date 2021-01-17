@@ -24,8 +24,6 @@ public class SoundJLayer extends PlaybackListener implements Runnable {
     public SoundJLayer(String filePath) {
         this.filePath = filePath;
         this.loop = false;
-
-        Info source = Port.Info.SPEAKER;
     }
     
     public SoundJLayer(String filePath, boolean loop) {
