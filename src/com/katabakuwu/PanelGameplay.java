@@ -18,6 +18,9 @@ public class PanelGameplay extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<HintObject> hintObjects = new ArrayList<HintObject>();
+	private JPanel gameEndPanel;
+	private GameKeyboard gameKeyboard;
+	private JButton hintBtn;
 	
 	public PanelGameplay(Game game) {
 		setBackground(Color.decode("#87CEEB"));
@@ -25,6 +28,9 @@ public class PanelGameplay extends JPanel {
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(null);
 		setVisible(true);
+		
+		gameEndPanel = new PanelGameEnd();
+		add(gameEndPanel);
 		
 		JLabel profileImg = new JLabel();
 		profileImg.setLocation(10, 10);
@@ -69,7 +75,7 @@ public class PanelGameplay extends JPanel {
 		player.getScore().setLabel(scoreLabel);
 		player.getScore().updateScore();
 		
-		ButtonHint hintBtn = new ButtonHint(this, game, 10, 292, 60, 60);
+		hintBtn = new ButtonHint(this, game, 10, 292, 60, 60);
 		add(hintBtn);
 		player.getHint().setButton(hintBtn);
 		
@@ -81,7 +87,7 @@ public class PanelGameplay extends JPanel {
 		clueField.setBounds(290, 333, 166, 30);
 		add(clueField);
 		
-		GameKeyboard gameKeyboard = new GameKeyboard(this, game, guessTextField, clueField);
+		gameKeyboard = new GameKeyboard(this, game, guessTextField, clueField);
 		
 		game.getUser().getPlayer().getGuessWord().setWord();
 		game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessTextField, clueField, gameKeyboard);
@@ -97,6 +103,13 @@ public class PanelGameplay extends JPanel {
 		HintObject ho = new HintObject(this, hintChar, -50, 100, 60, 60);
 		hintObjects.add(ho);
 		ho.startMoving();
+	}
+	
+	public void showGameEndPanel() {
+		hintBtn.setEnabled(false);
+		gameKeyboard.disableKeys();
+		setComponentZOrder(gameEndPanel, 0);
+		gameEndPanel.setVisible(true);
 	}
 	
 	@Override

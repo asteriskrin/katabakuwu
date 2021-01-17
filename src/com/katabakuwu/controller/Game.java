@@ -66,17 +66,14 @@ public class Game implements ScoreboardControl, ScreenController {
 	 */
 	public void endGame() {
 		stopBGM();
-		JOptionPane.showMessageDialog(null, "Permainan selesai, skormu sedang dikirimkan...\r\nHarap tunggu...");
-
+		((PanelGameplay) mf.getContentPane()).showGameEndPanel();
 		Thread thread = new Thread() {
 			public void run() {
 				try {
 					sendScore(user.getAuthKey(), user.getPlayer().getScore().getScore(), user.getLevel());
-					System.out.println("Skor berhasil dikirimkan.");
 				} catch (IOException e) {
-					System.out.println("Error while trying to send player score to server.");
+					JOptionPane.showMessageDialog(null, "Terjadi kesalahan ketika sedang mencoba mengirimkan skor ke server.\r\nPastikan kamu terhubung ke internet agar skor bermainmu dapat tersimpan ya!");
 				}
-				JOptionPane.showMessageDialog(null, "Skor telah berhasil dikirimkan...");
 				
 				showScoreboard();
 			}

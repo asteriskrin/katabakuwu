@@ -135,4 +135,13 @@ public class GameKeyboard extends JPanel {
 		//this.addKeyListener(keyboardHandler);
 		this.setFocusable(true);
 	}
+
+	/**
+	 * Disable all keys.
+	 */
+	public void disableKeys() {
+		for(JButton k : keyboard) {
+			k.setEnabled(false);
+		}
+	}
 }
