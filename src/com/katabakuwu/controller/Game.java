@@ -65,6 +65,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	 * End game.
 	 */
 	public void endGame() {
+		stopBGM();
 		JOptionPane.showMessageDialog(null, "Permainan selesai, skormu sedang dikirimkan...\r\nHarap tunggu...");
 
 		Thread thread = new Thread() {
@@ -266,6 +267,15 @@ public class Game implements ScoreboardControl, ScreenController {
 			}
 		};
 		thread.start();
+	}
+	
+	/**
+	 * Stop BGM.
+	 */
+	private void stopBGM() {
+		if(bgm != null && bgm.status.equals("play")) {
+			bgm.stop();
+		}
 	}
 	
 	/**
