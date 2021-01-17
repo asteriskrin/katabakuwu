@@ -86,7 +86,7 @@ public class ButtonKeyHandler implements ActionListener {
 					Player p = game.getUser().getPlayer();
 					p.getDamage();
 					if(p.getHealth().getValue() <= 0) {
-						game.endGame();
+						p.endGame();
 					}
 				}
 			};
