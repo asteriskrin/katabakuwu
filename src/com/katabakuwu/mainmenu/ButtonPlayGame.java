@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-import com.katabakuwu.FrameMainMenu;
+import com.katabakuwu.PanelMainMenu;
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.framework.SoundJLayer;
 
@@ -18,7 +18,7 @@ public class ButtonPlayGame extends JButton {
 
 	private static final long serialVersionUID = 1L;
 	private int x = -500, y = 306, width = 446, height = 60;
-	public ButtonPlayGame(Game game, FrameMainMenu frameMainMenu) {
+	public ButtonPlayGame(Game game, PanelMainMenu frameMainMenu) {
 		super("Start Game");
 		setFont(new Font("Tahoma", Font.PLAIN, 24));
 		setBounds(x, y, width, height);

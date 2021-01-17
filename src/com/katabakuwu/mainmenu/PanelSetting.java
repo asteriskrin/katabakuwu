@@ -6,14 +6,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-import com.katabakuwu.FrameMainMenu;
+import com.katabakuwu.PanelMainMenu;
 import com.katabakuwu.controller.Game;
 
 public class PanelSetting extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
-	public PanelSetting(FrameMainMenu frameMainMenu, Game game) {
+	public PanelSetting(PanelMainMenu frameMainMenu, Game game) {
 		setBorder(new LineBorder(Color.BLUE, 8));
 		setBounds(90, 220, 300, 200);
 		setVisible(false);

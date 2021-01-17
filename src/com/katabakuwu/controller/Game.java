@@ -18,7 +18,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.katabakuwu.PanelGameplay;
-import com.katabakuwu.FrameMainMenu;
+import com.katabakuwu.PanelMainMenu;
 import com.katabakuwu.FrameScoreboard;
 import com.katabakuwu.MainFrame;
 import com.katabakuwu.PanelMainMenuLoading;
@@ -238,7 +238,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	@Override
 	public void showMainMenu() {
 		try {
-			FrameMainMenu panel = new FrameMainMenu(this);
+			PanelMainMenu panel = new PanelMainMenu(this);
 			mf.getContentPane().removeAll();
 			mf.setContentPane(panel);
 			mf.revalidate();
