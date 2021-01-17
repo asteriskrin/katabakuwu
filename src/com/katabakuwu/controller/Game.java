@@ -38,6 +38,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	private WordDatabase wordDatabase;
 	private User user;
 	private SoundJLayer bgm;
+	private float volume = 1;
 	
 	public Game() {
 		wordDatabase = new WordDatabase();
@@ -249,7 +250,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	}
 
 	/**
-	 * Play BGM..
+	 * Play BGM.
 	 * 
 	 * @param string File path
 	 */
@@ -260,11 +261,23 @@ public class Game implements ScoreboardControl, ScreenController {
 					bgm.stop();
 				}
 				bgm = new SoundJLayer(filePath, true);
+				bgm.setVolume(volume);
 				bgm.play();
 			}
 		};
 		thread.start();
 	}
+	
+	/**
+	 * Set BGM volume.
+	 * 
+	 * @param string File path
+	 */
+	public void setVolume(float volume) {
+		bgm.setVolume(volume);
+		this.volume = volume;
+	}
+
 
 	/**
 	 * Start game.
