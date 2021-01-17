@@ -38,7 +38,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	private WordDatabase wordDatabase;
 	private User user;
 	private SoundJLayer bgm;
-	private float volume = 1;
+	private float volume = 0.5f;
 	
 	public Game() {
 		wordDatabase = new WordDatabase();
