@@ -150,6 +150,7 @@ public class Player {
 	 * End game.
 	 */
 	public void endGame() {
+		timer.stopTimer();
 		user.endGame();
 	}
 }
