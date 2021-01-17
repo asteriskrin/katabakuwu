@@ -85,8 +85,7 @@ public class SoundJLayer extends PlaybackListener implements Runnable {
                 Port outline = (Port) AudioSystem.getLine(source);
                 outline.open();                
                 FloatControl volumeControl = (FloatControl) outline.getControl(FloatControl.Type.VOLUME);          
-                float v = volume;
-                volumeControl.setValue(v);
+                volumeControl.setValue(volume);
             } 
             catch (LineUnavailableException ex) 
             {
