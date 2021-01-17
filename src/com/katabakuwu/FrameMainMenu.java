@@ -38,7 +38,7 @@ public class FrameMainMenu extends JPanel {
 		setLayout(null);
 		setVisible(true);
 		
-		panel = new PanelSetting(this);
+		panel = new PanelSetting(this, game);
 		add(panel);
 		
 		JLabel picLabel = new LabelLogo();

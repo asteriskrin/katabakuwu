@@ -81,10 +81,10 @@ public class FrameGame extends JPanel {
 		clueField.setBounds(290, 333, 166, 30);
 		add(clueField);
 		
-		game.getUser().getPlayer().getGuessWord().setWord();
-		game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessTextField, clueField);
-
 		GameKeyboard gameKeyboard = new GameKeyboard(this, game, guessTextField, clueField);
+		
+		game.getUser().getPlayer().getGuessWord().setWord();
+		game.getUser().getPlayer().getGuessWord().updateWordDisplay(guessTextField, clueField, gameKeyboard);
 		
 		JLabel cloud1 = new Cloud(50, 50, 200, 150, 1, 0, 480, 640);
 		add(cloud1);

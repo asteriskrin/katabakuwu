@@ -107,4 +107,13 @@ public class User {
 	public void setAuthKey(String key) {
 		authKey = key;
 	}
+
+	/**
+	 * Reset user data.
+	 */
+	public void resetData() {
+		name = "no_name";
+		level = 1;
+		authKey = "no_key";
+	}
 }
