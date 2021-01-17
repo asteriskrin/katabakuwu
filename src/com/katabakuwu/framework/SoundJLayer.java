@@ -1,13 +1,23 @@
 package com.katabakuwu.framework;
 
+import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 import javazoom.jl.player.advanced.PlaybackEvent;
 import javazoom.jl.player.advanced.PlaybackListener;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.Port;
+import javax.sound.sampled.Line.Info;
+
+import com.katabakuwu.framework.*;
 
 public class SoundJLayer extends PlaybackListener implements Runnable {
     private String filePath;
     private AdvancedPlayer player;
     private Thread playerThread;
+    private Info source = Port.Info.SPEAKER;
     public String status = "stop";
     public boolean loop;
     
@@ -65,5 +75,23 @@ public class SoundJLayer extends PlaybackListener implements Runnable {
     public void stop() {
     	this.player.stop();
     	status = "stop";
+    }
+    
+    public void setVolume(float volume) {
+    	if (AudioSystem.isLineSupported(source)) 
+        {
+            try 
+            {
+                Port outline = (Port) AudioSystem.getLine(source);
+                outline.open();                
+                FloatControl volumeControl = (FloatControl) outline.getControl(FloatControl.Type.VOLUME);          
+                volumeControl.setValue(volume);
+            } 
+            catch (LineUnavailableException ex) 
+            {
+                System.err.println("source not supported");
+                ex.printStackTrace();
+            }            
+        }
     }
 }
