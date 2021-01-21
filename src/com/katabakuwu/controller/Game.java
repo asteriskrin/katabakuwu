@@ -17,9 +17,9 @@ import javax.swing.JOptionPane;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.katabakuwu.FrameGame;
-import com.katabakuwu.FrameMainMenu;
-import com.katabakuwu.FrameScoreboard;
+import com.katabakuwu.PanelGameplay;
+import com.katabakuwu.PanelMainMenu;
+import com.katabakuwu.PanelScoreboard;
 import com.katabakuwu.MainFrame;
 import com.katabakuwu.PanelMainMenuLoading;
 import com.katabakuwu.data.User;
@@ -65,17 +65,15 @@ public class Game implements ScoreboardControl, ScreenController {
 	 * End game.
 	 */
 	public void endGame() {
-		JOptionPane.showMessageDialog(null, "Permainan selesai, skormu sedang dikirimkan...\r\nHarap tunggu...");
-
+		stopBGM();
+		((PanelGameplay) mf.getContentPane()).showGameEndPanel();
 		Thread thread = new Thread() {
 			public void run() {
 				try {
 					sendScore(user.getAuthKey(), user.getPlayer().getScore().getScore(), user.getLevel());
-					System.out.println("Skor berhasil dikirimkan.");
 				} catch (IOException e) {
-					System.out.println("Error while trying to send player score to server.");
+					JOptionPane.showMessageDialog(null, "Terjadi kesalahan ketika sedang mencoba mengirimkan skor ke server.\r\nPastikan kamu terhubung ke internet agar skor bermainmu dapat tersimpan ya!");
 				}
-				JOptionPane.showMessageDialog(null, "Skor telah berhasil dikirimkan...");
 				
 				showScoreboard();
 			}
@@ -223,7 +221,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	@Override
 	public void showScoreboard() {
 		try {
-			FrameScoreboard panel = new FrameScoreboard(this);
+			PanelScoreboard panel = new PanelScoreboard(this);
 			mf.getContentPane().removeAll();
 			mf.setContentPane(panel);
 			mf.revalidate();
@@ -238,7 +236,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	@Override
 	public void showMainMenu() {
 		try {
-			FrameMainMenu panel = new FrameMainMenu(this);
+			PanelMainMenu panel = new PanelMainMenu(this);
 			mf.getContentPane().removeAll();
 			mf.setContentPane(panel);
 			mf.revalidate();
@@ -269,6 +267,15 @@ public class Game implements ScoreboardControl, ScreenController {
 	}
 	
 	/**
+	 * Stop BGM.
+	 */
+	private void stopBGM() {
+		if(bgm != null && bgm.status.equals("play")) {
+			bgm.stop();
+		}
+	}
+	
+	/**
 	 * Set BGM volume.
 	 * 
 	 * @param string File path
@@ -293,7 +300,7 @@ public class Game implements ScoreboardControl, ScreenController {
 	 */
 	@Override
 	public void showGameplayPanel() {
-		FrameGame panel = new FrameGame(this);
+		PanelGameplay panel = new PanelGameplay(this);
 		mf.getContentPane().removeAll();
 		mf.setContentPane(panel);
 		mf.revalidate();

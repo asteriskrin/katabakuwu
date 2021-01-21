@@ -39,7 +39,7 @@ public class ScoreboardList extends AbstractListModel<String> {
 				items.add(sc.nextLine());
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 

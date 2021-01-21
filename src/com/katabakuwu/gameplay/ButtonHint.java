@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import com.katabakuwu.FrameGame;
+import com.katabakuwu.PanelGameplay;
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.data.Player;
 import com.katabakuwu.framework.SoundJLayer;
@@ -24,9 +24,9 @@ public class ButtonHint extends JButton implements ActionListener {
 	
 	private Game game;
 	private int x, y, width, height;
-	private FrameGame fg;
+	private PanelGameplay fg;
 	
-	public ButtonHint(FrameGame fg, Game game, int x, int y, int width, int height) {
+	public ButtonHint(PanelGameplay fg, Game game, int x, int y, int width, int height) {
 		super("?");
 		
 		this.x = x;

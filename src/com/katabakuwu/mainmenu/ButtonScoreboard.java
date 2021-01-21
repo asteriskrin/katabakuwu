@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-import com.katabakuwu.FrameMainMenu;
+import com.katabakuwu.PanelMainMenu;
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.framework.SoundJLayer;
 
@@ -35,7 +35,7 @@ public class ButtonScoreboard extends JButton implements ActionListener {
 	 * @param width Button width
 	 * @param height Button height
 	 */
-	public ButtonScoreboard(Game game, FrameMainMenu frameMainMenu) {
+	public ButtonScoreboard(Game game, PanelMainMenu frameMainMenu) {
 		super("Scoreboard");
 		
 		this.game = game;

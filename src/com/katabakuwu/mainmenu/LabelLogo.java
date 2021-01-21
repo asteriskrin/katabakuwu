@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 public class LabelLogo extends JLabel {
 
 	private static final long serialVersionUID = 1L;
-	private int x = 165, y = -100;
+	private int x = 160, y = -100;
 	public LabelLogo() {
 		setLocation(x, y);
 		setSize(150, 150);
@@ -20,7 +20,7 @@ public class LabelLogo extends JLabel {
 	
 	private class LabelThread extends Thread {
 		public void run() {
-			while(y < 100) {
+			while(y < 50) {
 				y += 1;
 				setLocation(x, y);
 				try {

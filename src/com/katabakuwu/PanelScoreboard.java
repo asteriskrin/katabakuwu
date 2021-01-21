@@ -19,11 +19,11 @@ import java.awt.event.ActionListener;
  * @author Farhan Arifandi
  * @author Ryan Garnet Andrianto
  */
-public class FrameScoreboard extends JPanel {
+public class PanelScoreboard extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public FrameScoreboard(Game game) {
+	public PanelScoreboard(Game game) {
 		setBackground(Color.decode("#87CEEB"));
 		setBounds(new Rectangle(0,0,480,640));
 		setBorder(new EmptyBorder(5, 5, 5, 5));

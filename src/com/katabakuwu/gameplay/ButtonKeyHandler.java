@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import com.katabakuwu.GameKeyboard;
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.framework.SoundJLayer;
 import com.katabakuwu.data.Player;
@@ -87,7 +86,7 @@ public class ButtonKeyHandler implements ActionListener {
 					Player p = game.getUser().getPlayer();
 					p.getDamage();
 					if(p.getHealth().getValue() <= 0) {
-						game.endGame();
+						p.endGame();
 					}
 				}
 			};

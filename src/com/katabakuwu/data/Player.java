@@ -1,5 +1,6 @@
 package com.katabakuwu.data;
 
+import com.katabakuwu.framework.SoundJLayer;
 import com.katabakuwu.gameplay.GuessWord;
 
 /**
@@ -150,6 +151,14 @@ public class Player {
 	 * End game.
 	 */
 	public void endGame() {
+		Thread soundThread = new Thread() {
+			public void run() {
+				SoundJLayer sound = new SoundJLayer("assets/sounds/game_end.mp3");
+				sound.play();
+			}
+		};
+		soundThread.start();
+		timer.stopTimer();
 		user.endGame();
 	}
 }

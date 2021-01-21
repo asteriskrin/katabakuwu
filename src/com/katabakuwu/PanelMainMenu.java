@@ -20,7 +20,7 @@ import java.awt.*;
  * @author Farhan Arifandi
  * @author Ryan Garnet Andrianto
  */
-public class FrameMainMenu extends JPanel {
+public class PanelMainMenu extends JPanel {
 	
 	private PanelSetting panel;
 	public boolean enabled;
@@ -31,7 +31,7 @@ public class FrameMainMenu extends JPanel {
 	 * Create the frame.
 	 * 
 	 */
-	public FrameMainMenu(Game game) {
+	public PanelMainMenu(Game game) {
 		setBackground(Color.decode("#87CEEB"));
 		setBounds(new Rectangle(0,0,480,640));
 		setBorder(new EmptyBorder(5, 5, 5, 5));

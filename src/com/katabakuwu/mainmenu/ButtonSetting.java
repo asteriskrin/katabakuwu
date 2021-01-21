@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-import com.katabakuwu.FrameMainMenu;
+import com.katabakuwu.PanelMainMenu;
 import com.katabakuwu.controller.Game;
 import com.katabakuwu.framework.SoundJLayer;
 
@@ -19,7 +19,7 @@ public class ButtonSetting extends JButton implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private int x = -1000, y = 466, width = 446, height = 60;
 	
-	public ButtonSetting(Game game, FrameMainMenu frameMainMenu) {
+	public ButtonSetting(Game game, PanelMainMenu frameMainMenu) {
 		super("Setting");
 		
 		setFont(new Font("Tahoma", Font.PLAIN, 24));
