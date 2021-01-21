@@ -162,6 +162,7 @@ public class Game implements ScoreboardControl, ScreenController {
 		    JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
 		    JsonObject rootobj = root.getAsJsonObject();
 		    String authKey = rootobj.get("auth_key").getAsString();
+		    user.setAuthKey(authKey);
 		    
 		    return writeAuthKey(authKey);
 		    
